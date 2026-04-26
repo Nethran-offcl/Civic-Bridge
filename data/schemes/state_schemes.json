@@ -1,0 +1,174 @@
+[
+  {
+    "id": "KA-GRUHA-LAKSHMI-001",
+    "name": "Karnataka Gruha Lakshmi",
+    "ministry": "Government of Karnataka",
+    "category": "women",
+    "subCategory": "Household income support",
+    "description": "Monthly assistance for eligible woman head of household in Karnataka.",
+    "descriptionDetailed": "Gruha Lakshmi is a Karnataka household support scheme focused on women heads of eligible families.",
+    "eligibility": {
+      "age": { "min": 18 },
+      "states": ["Karnataka"],
+      "gender": "female",
+      "occupations": ["farmer", "agricultural_labourer", "artisan", "construction_worker", "domestic_worker", "small_business", "unemployed", "other"],
+      "incomeRanges": ["below_50000", "50000_100000", "100000_200000"],
+      "caste": ["SC", "ST", "OBC", "General"],
+      "landHolding": ["landless", "below_1acre", "1_2acres"],
+      "notes": ["Applicant should be the woman head of an eligible Karnataka household.", "Household-level exclusions may apply."]
+    },
+    "benefits": [
+      { "title": "Monthly support", "amount": "Rs. 2,000/month", "description": "Paid to the eligible woman beneficiary." }
+    ],
+    "applicationProcess": [
+      { "title": "Check household eligibility", "description": "Confirm ration card and household details." },
+      { "title": "Apply through Seva Sindhu", "description": "Use Seva Sindhu or local assisted centers." },
+      { "title": "Track DBT", "description": "Check payment status after approval." }
+    ],
+    "documents": ["Ration card", "Identity proof", "Bank account", "Mobile number"],
+    "applicationUrl": "https://sevasindhugs.karnataka.gov.in/",
+    "helplineNumber": "1902",
+    "state": "Karnataka",
+    "isActive": true,
+    "tags": ["karnataka", "women", "dbt", "household"],
+    "lastUpdated": "2026-04-26",
+    "sourceUrl": "https://sevasindhugs.karnataka.gov.in/"
+  },
+  {
+    "id": "KA-RAITHA-SIRI-002",
+    "name": "Karnataka Raitha Siri",
+    "ministry": "Department of Agriculture, Government of Karnataka",
+    "category": "agriculture",
+    "subCategory": "Millet cultivation support",
+    "description": "Incentive support for eligible millet-growing farmers in Karnataka.",
+    "descriptionDetailed": "Raitha Siri supports cultivation of nutri cereals/millets by providing assistance per hectare, subject to state guidelines and DBT verification.",
+    "eligibility": {
+      "age": { "min": 18 },
+      "states": ["Karnataka"],
+      "occupations": ["farmer"],
+      "incomeRanges": ["below_50000", "50000_100000", "100000_200000", "200000_500000"],
+      "caste": ["SC", "ST", "OBC", "General"],
+      "landHolding": ["below_1acre", "1_2acres", "2_5acres"],
+      "notes": ["Farmer should cultivate eligible millet/nutri cereal crops.", "Assistance is limited by area and state budget rules."]
+    },
+    "benefits": [
+      { "title": "Millet cultivation incentive", "amount": "Up to Rs. 10,000/hectare", "description": "Support may be limited to a maximum eligible area." }
+    ],
+    "applicationProcess": [
+      { "title": "Contact Raitha Samparka Kendra", "description": "Check current notification and crop eligibility." },
+      { "title": "Submit crop details", "description": "Provide land and crop details for DBT verification." },
+      { "title": "Track payment", "description": "Follow up with agriculture department or local center." }
+    ],
+    "documents": ["Land record", "Crop details", "Identity proof", "Bank account"],
+    "applicationUrl": "https://raitamitra.karnataka.gov.in/",
+    "helplineNumber": "Contact Raitha Samparka Kendra",
+    "state": "Karnataka",
+    "isActive": true,
+    "tags": ["karnataka", "farmer", "millets", "dbt"],
+    "lastUpdated": "2026-04-26",
+    "sourceUrl": "https://fpibengaluru.karnataka.gov.in/uploads/media_to_upload1762764053.pdf"
+  },
+  {
+    "id": "KA-SSP-003",
+    "name": "Karnataka State Scholarship Portal",
+    "ministry": "Government of Karnataka",
+    "category": "education",
+    "subCategory": "State scholarships",
+    "description": "Karnataka portal for pre-matric and post-matric scholarship applications.",
+    "descriptionDetailed": "The State Scholarship Portal lets eligible Karnataka students apply for department scholarships and track verification.",
+    "eligibility": {
+      "age": { "min": 10, "max": 35 },
+      "states": ["Karnataka"],
+      "occupations": ["student"],
+      "incomeRanges": ["below_50000", "50000_100000", "100000_200000", "200000_500000"],
+      "caste": ["SC", "ST", "OBC", "General"],
+      "landHolding": [],
+      "notes": ["Eligibility depends on course, department, category, and income rules.", "Student must usually be enrolled in a recognized institution."]
+    },
+    "benefits": [
+      { "title": "Scholarship assistance", "amount": "Varies by department", "description": "Fee and maintenance support based on the selected scheme." }
+    ],
+    "applicationProcess": [
+      { "title": "Create SSP profile", "description": "Register on the Karnataka SSP portal." },
+      { "title": "Select eligible scholarship", "description": "Fill education, income, and category details." },
+      { "title": "Track verification", "description": "Monitor institution and department verification online." }
+    ],
+    "documents": ["Student ID", "Income certificate", "Caste certificate if applicable", "Previous marksheet", "Bank account"],
+    "applicationUrl": "https://ssp.postmatric.karnataka.gov.in/",
+    "helplineNumber": "1902",
+    "state": "Karnataka",
+    "isActive": true,
+    "tags": ["karnataka", "student", "scholarship", "education"],
+    "lastUpdated": "2026-04-26",
+    "sourceUrl": "https://ssp.postmatric.karnataka.gov.in/"
+  },
+  {
+    "id": "KA-BOCW-004",
+    "name": "Karnataka Construction Worker Welfare Benefits",
+    "ministry": "Karnataka Building and Other Construction Workers Welfare Board",
+    "category": "labour",
+    "subCategory": "Worker welfare",
+    "description": "Welfare support for registered building and construction workers in Karnataka.",
+    "descriptionDetailed": "Registered construction workers can access welfare benefits such as education, medical, pension, and tool assistance depending on board rules.",
+    "eligibility": {
+      "age": { "min": 18, "max": 60 },
+      "states": ["Karnataka"],
+      "occupations": ["construction_worker"],
+      "incomeRanges": ["below_50000", "50000_100000", "100000_200000", "200000_500000"],
+      "caste": ["SC", "ST", "OBC", "General"],
+      "landHolding": [],
+      "notes": ["Applicant should be a registered construction worker.", "Workdays and contribution/registration rules may apply."]
+    },
+    "benefits": [
+      { "title": "Worker welfare support", "amount": "Varies by benefit", "description": "Education, medical, pension, and other board benefits." }
+    ],
+    "applicationProcess": [
+      { "title": "Register as worker", "description": "Apply through the labour department/board system." },
+      { "title": "Select benefit", "description": "Choose the benefit category and submit proof." },
+      { "title": "Track approval", "description": "Follow up through the portal or district labour office." }
+    ],
+    "documents": ["Identity proof", "Age proof", "Address proof", "Employment certificate", "Bank account"],
+    "applicationUrl": "https://labour.karnataka.gov.in/",
+    "helplineNumber": "155214",
+    "state": "Karnataka",
+    "isActive": true,
+    "tags": ["karnataka", "construction", "labour", "welfare"],
+    "lastUpdated": "2026-04-26",
+    "sourceUrl": "https://labour.karnataka.gov.in/"
+  },
+  {
+    "id": "KA-SANJEEVINI-005",
+    "name": "Sanjeevini Karnataka Rural Livelihood Mission",
+    "ministry": "Skill Development, Entrepreneurship and Livelihood Department, Karnataka",
+    "category": "women",
+    "subCategory": "SHG livelihood support",
+    "description": "Rural livelihood support through women self-help groups in Karnataka.",
+    "descriptionDetailed": "Sanjeevini-KSRLPS supports rural poor households through SHGs, livelihood clusters, producer companies, and financial inclusion.",
+    "eligibility": {
+      "age": { "min": 18 },
+      "states": ["Karnataka"],
+      "gender": "female",
+      "occupations": ["farmer", "agricultural_labourer", "artisan", "domestic_worker", "small_business", "unemployed", "other"],
+      "incomeRanges": ["below_50000", "50000_100000", "100000_200000"],
+      "caste": ["SC", "ST", "OBC", "General"],
+      "landHolding": ["landless", "below_1acre", "1_2acres", "2_5acres"],
+      "notes": ["Usually accessed through SHG membership and local mission structures.", "Support differs by block and livelihood programme."]
+    },
+    "benefits": [
+      { "title": "SHG livelihood support", "amount": "Credit, training, and market linkage", "description": "Support for farm and non-farm livelihoods through community institutions." }
+    ],
+    "applicationProcess": [
+      { "title": "Find local SHG", "description": "Contact Gram Panchayat or KSRLPS block team." },
+      { "title": "Join community process", "description": "Participate in SHG savings, meetings, and livelihood planning." },
+      { "title": "Access support", "description": "Use SHG linkage for credit, training, and market support." }
+    ],
+    "documents": ["Identity proof", "Address proof", "Bank account", "SHG membership details"],
+    "applicationUrl": "https://ksrlps.karnataka.gov.in/english",
+    "helplineNumber": "Contact district KSRLPS office",
+    "state": "Karnataka",
+    "isActive": true,
+    "tags": ["karnataka", "women", "shg", "livelihood"],
+    "lastUpdated": "2026-04-26",
+    "sourceUrl": "https://ksrlps.karnataka.gov.in/english"
+  }
+]

@@ -1,0 +1,498 @@
+[
+  {
+    "id": "PM-KISAN-001",
+    "name": "PM-KISAN Samman Nidhi",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "category": "agriculture",
+    "subCategory": "Income support",
+    "description": "Direct income support for eligible landholding farmer families.",
+    "descriptionDetailed": "PM-KISAN provides Rs. 6,000 per year in three equal installments to eligible farmer families, subject to land record and exclusion checks.",
+    "eligibility": {
+      "age": { "min": 18 },
+      "states": ["all"],
+      "occupations": ["farmer"],
+      "incomeRanges": ["below_50000", "50000_100000", "100000_200000"],
+      "caste": [],
+      "landHolding": ["below_1acre", "1_2acres", "2_5acres"],
+      "notes": ["Applicant should be part of an eligible landholding farmer family.", "Institutional landholders and higher-income exclusion categories are not eligible."]
+    },
+    "benefits": [
+      { "title": "Income support", "amount": "Rs. 6,000/year", "description": "Paid as three installments of Rs. 2,000." }
+    ],
+    "applicationProcess": [
+      { "title": "Check land records", "description": "Keep land ownership details and bank account ready." },
+      { "title": "Register online or through officials", "description": "Use the PM-KISAN portal or local agriculture office/CSC." },
+      { "title": "Track status", "description": "Use beneficiary status on the portal after registration." }
+    ],
+    "documents": ["Land record", "Identity proof", "Bank account details", "Mobile number"],
+    "applicationUrl": "https://pmkisan.gov.in/",
+    "helplineNumber": "155261 / 011-24300606",
+    "isActive": true,
+    "tags": ["farmer", "income", "dbt", "rural"],
+    "lastUpdated": "2026-04-26",
+    "sourceUrl": "https://fw.pmkisan.gov.in/"
+  },
+  {
+    "id": "PMAY-G-002",
+    "name": "Pradhan Mantri Awaas Yojana - Gramin",
+    "ministry": "Ministry of Rural Development",
+    "category": "housing",
+    "subCategory": "Rural housing",
+    "description": "Housing assistance for eligible rural households without a pucca house.",
+    "descriptionDetailed": "PMAY-G supports construction of durable rural houses for households identified through deprivation and local verification criteria.",
+    "eligibility": {
+      "age": { "min": 18 },
+      "states": ["all"],
+      "occupations": ["farmer", "agricultural_labourer", "construction_worker", "domestic_worker", "unemployed", "other"],
+      "incomeRanges": ["below_50000", "50000_100000"],
+      "caste": ["SC", "ST", "OBC"],
+      "landHolding": ["landless", "below_1acre"],
+      "notes": ["Rural household should not own a pucca house.", "Priority is based on deprivation data and Gram Sabha verification."]
+    },
+    "benefits": [
+      { "title": "Housing assistance", "amount": "Rs. 1.2 lakh to Rs. 1.3 lakh", "description": "Assistance varies by plain or hilly/difficult area." }
+    ],
+    "applicationProcess": [
+      { "title": "Check beneficiary list", "description": "Use the PMAY-G portal or contact the Gram Panchayat." },
+      { "title": "Verify details locally", "description": "Household details are verified by local officials." },
+      { "title": "Receive installment support", "description": "Approved beneficiaries receive support through DBT-linked stages." }
+    ],
+    "documents": ["Identity proof", "Ration card", "Job card if available", "Bank account details"],
+    "applicationUrl": "https://pmayg.nic.in/",
+    "helplineNumber": "1800-11-6446",
+    "isActive": true,
+    "tags": ["housing", "rural", "bpl", "gram panchayat"],
+    "lastUpdated": "2026-04-26",
+    "sourceUrl": "https://pmayg.nic.in/"
+  },
+  {
+    "id": "PMJAY-003",
+    "name": "Ayushman Bharat PM-JAY",
+    "ministry": "National Health Authority",
+    "category": "health",
+    "subCategory": "Health insurance",
+    "description": "Cashless hospital treatment cover for eligible poor and vulnerable families.",
+    "descriptionDetailed": "PM-JAY provides health cover for secondary and tertiary care hospitalization at empanelled hospitals for eligible households.",
+    "eligibility": {
+      "age": {},
+      "states": ["all"],
+      "occupations": ["agricultural_labourer", "construction_worker", "domestic_worker", "artisan", "fisherman", "small_business", "other"],
+      "incomeRanges": ["below_50000", "50000_100000"],
+      "caste": ["SC", "ST", "OBC"],
+      "landHolding": ["landless", "below_1acre"],
+      "notes": ["Eligibility is generally based on deprivation and occupational categories.", "Families can check eligibility on the beneficiary portal."]
+    },
+    "benefits": [
+      { "title": "Hospital cover", "amount": "Up to Rs. 5 lakh/family/year", "description": "Cashless treatment at empanelled hospitals." }
+    ],
+    "applicationProcess": [
+      { "title": "Check eligibility", "description": "Use the beneficiary portal or visit a CSC/Ayushman Mitra." },
+      { "title": "Generate Ayushman card", "description": "Complete verification at a CSC, hospital help desk, or official app." },
+      { "title": "Use at hospital", "description": "Show the card at an empanelled hospital help desk." }
+    ],
+    "documents": ["Identity proof", "Ration card", "Mobile number"],
+    "applicationUrl": "https://beneficiary.nha.gov.in/",
+    "helplineNumber": "14555 / 1800-111-565",
+    "isActive": true,
+    "tags": ["health", "hospital", "insurance", "family"],
+    "lastUpdated": "2026-04-26",
+    "sourceUrl": "https://pmjay.gov.in/"
+  },
+  {
+    "id": "PMJJBY-004",
+    "name": "Pradhan Mantri Jeevan Jyoti Bima Yojana",
+    "ministry": "Department of Financial Services",
+    "category": "insurance",
+    "subCategory": "Life insurance",
+    "description": "Low-cost life insurance cover through a bank or post office account.",
+    "descriptionDetailed": "PMJJBY is a renewable one-year life insurance cover for eligible account holders, with premium paid through auto-debit.",
+    "eligibility": {
+      "age": { "min": 18, "max": 50 },
+      "states": ["all"],
+      "occupations": ["farmer", "agricultural_labourer", "fisherman", "artisan", "construction_worker", "domestic_worker", "small_business", "student", "unemployed", "other"],
+      "incomeRanges": ["below_50000", "50000_100000", "100000_200000", "200000_500000", "above_500000"],
+      "caste": [],
+      "landHolding": [],
+      "notes": ["Applicant must have a savings bank or post office account.", "Premium is auto-debited after consent."]
+    },
+    "benefits": [
+      { "title": "Life cover", "amount": "Rs. 2 lakh", "description": "Insurance cover for death due to any reason." }
+    ],
+    "applicationProcess": [
+      { "title": "Contact bank or post office", "description": "Ask for PMJJBY enrollment." },
+      { "title": "Submit consent form", "description": "Authorize annual premium auto-debit from one account only." },
+      { "title": "Renew yearly", "description": "Maintain balance before renewal period." }
+    ],
+    "documents": ["Bank or post office account", "Identity/KYC proof", "Nominee details"],
+    "applicationUrl": "https://www.jansuraksha.gov.in/",
+    "helplineNumber": "1800-180-1111 / 1800-110-001",
+    "isActive": true,
+    "tags": ["insurance", "life cover", "bank account"],
+    "lastUpdated": "2026-04-26",
+    "sourceUrl": "https://jansuraksha.gov.in/Files/PMJJBY/ENGLISH/Rules.pdf"
+  },
+  {
+    "id": "PMSBY-005",
+    "name": "Pradhan Mantri Suraksha Bima Yojana",
+    "ministry": "Department of Financial Services",
+    "category": "insurance",
+    "subCategory": "Accident insurance",
+    "description": "Low-cost accidental death and disability insurance.",
+    "descriptionDetailed": "PMSBY is a renewable accidental insurance cover for eligible bank or post office account holders.",
+    "eligibility": {
+      "age": { "min": 18, "max": 70 },
+      "states": ["all"],
+      "occupations": ["farmer", "agricultural_labourer", "fisherman", "artisan", "construction_worker", "domestic_worker", "small_business", "student", "unemployed", "other"],
+      "incomeRanges": ["below_50000", "50000_100000", "100000_200000", "200000_500000", "above_500000"],
+      "caste": [],
+      "landHolding": [],
+      "notes": ["Applicant must have a participating bank or post office account.", "Enrollment is through one account only."]
+    },
+    "benefits": [
+      { "title": "Accident cover", "amount": "Rs. 1 lakh to Rs. 2 lakh", "description": "Cover depends on death, total disability, or partial disability." }
+    ],
+    "applicationProcess": [
+      { "title": "Visit bank or post office", "description": "Ask for PMSBY enrollment." },
+      { "title": "Submit consent", "description": "Authorize annual premium auto-debit." },
+      { "title": "Keep nominee updated", "description": "Update nominee details when needed." }
+    ],
+    "documents": ["Bank or post office account", "Identity/KYC proof", "Nominee details"],
+    "applicationUrl": "https://www.jansuraksha.gov.in/",
+    "helplineNumber": "1800-180-1111 / 1800-110-001",
+    "isActive": true,
+    "tags": ["insurance", "accident", "disability"],
+    "lastUpdated": "2026-04-26",
+    "sourceUrl": "https://jansuraksha.gov.in/Files/PMSBY/English/Rules.pdf"
+  },
+  {
+    "id": "NSP-006",
+    "name": "National Scholarship Portal",
+    "ministry": "Ministry of Electronics and Information Technology",
+    "category": "education",
+    "subCategory": "Scholarships",
+    "description": "Single portal for central and state education scholarships.",
+    "descriptionDetailed": "NSP helps students discover, apply for, and track scholarship schemes from multiple ministries and states.",
+    "eligibility": {
+      "age": { "min": 10, "max": 35 },
+      "states": ["all"],
+      "occupations": ["student"],
+      "incomeRanges": ["below_50000", "50000_100000", "100000_200000", "200000_500000"],
+      "caste": ["SC", "ST", "OBC", "General"],
+      "landHolding": [],
+      "notes": ["Eligibility depends on the selected scholarship.", "Most scholarships require current enrollment and income/category proof."]
+    },
+    "benefits": [
+      { "title": "Scholarship support", "amount": "Varies by scheme", "description": "Tuition, maintenance, or merit-based support depending on scheme." }
+    ],
+    "applicationProcess": [
+      { "title": "Register on NSP", "description": "Create a student profile on the official portal." },
+      { "title": "Select eligible scheme", "description": "Use profile details to find available scholarships." },
+      { "title": "Submit and track", "description": "Upload documents and track verification online." }
+    ],
+    "documents": ["Student ID", "Income certificate", "Caste certificate if applicable", "Bank account", "Previous marksheet"],
+    "applicationUrl": "https://scholarships.gov.in/",
+    "helplineNumber": "0120-6619540",
+    "isActive": true,
+    "tags": ["student", "scholarship", "education"],
+    "lastUpdated": "2026-04-26",
+    "sourceUrl": "https://scholarships.gov.in/"
+  },
+  {
+    "id": "MUDRA-007",
+    "name": "Pradhan Mantri MUDRA Yojana",
+    "ministry": "Ministry of Finance",
+    "category": "startup",
+    "subCategory": "Micro enterprise credit",
+    "description": "Loans for non-corporate, non-farm micro and small enterprises.",
+    "descriptionDetailed": "MUDRA supports small entrepreneurs through Shishu, Kishor, and Tarun loan categories via banks, MFIs, and NBFCs.",
+    "eligibility": {
+      "age": { "min": 18 },
+      "states": ["all"],
+      "occupations": ["artisan", "small_business", "domestic_worker", "fisherman", "other"],
+      "incomeRanges": ["below_50000", "50000_100000", "100000_200000", "200000_500000"],
+      "caste": ["SC", "ST", "OBC", "General"],
+      "landHolding": [],
+      "notes": ["Business should be a non-corporate, non-farm income-generating activity.", "Loan sanction is by lending institutions."]
+    },
+    "benefits": [
+      { "title": "Business loan", "amount": "Up to Rs. 10 lakh", "description": "Credit support through Shishu, Kishor, and Tarun categories." }
+    ],
+    "applicationProcess": [
+      { "title": "Prepare business details", "description": "Collect business plan, ID, and bank details." },
+      { "title": "Apply through lender", "description": "Approach a bank/MFI/NBFC or use Udyamimitra." },
+      { "title": "Complete lender checks", "description": "Submit documents requested by the lending institution." }
+    ],
+    "documents": ["Identity proof", "Address proof", "Business proof", "Bank statement if available"],
+    "applicationUrl": "https://www.udyamimitra.in/",
+    "helplineNumber": "1800-180-1111",
+    "isActive": true,
+    "tags": ["loan", "business", "micro enterprise", "self employment"],
+    "lastUpdated": "2026-04-26",
+    "sourceUrl": "https://www.mudra.org.in/"
+  },
+  {
+    "id": "NRLM-008",
+    "name": "DAY-NRLM Self Help Groups",
+    "ministry": "Ministry of Rural Development",
+    "category": "women",
+    "subCategory": "Livelihoods",
+    "description": "Rural livelihood support through women-led self-help groups.",
+    "descriptionDetailed": "DAY-NRLM mobilizes rural poor households into self-help groups and supports savings, credit linkage, skills, and livelihoods.",
+    "eligibility": {
+      "age": { "min": 18 },
+      "states": ["all"],
+      "gender": "female",
+      "occupations": ["farmer", "agricultural_labourer", "artisan", "domestic_worker", "small_business", "unemployed", "other"],
+      "incomeRanges": ["below_50000", "50000_100000", "100000_200000"],
+      "caste": ["SC", "ST", "OBC", "General"],
+      "landHolding": ["landless", "below_1acre", "1_2acres"],
+      "notes": ["Designed mainly for rural poor households, especially women.", "Access is usually through local SHG/community institutions."]
+    },
+    "benefits": [
+      { "title": "SHG livelihood support", "amount": "Credit and training support", "description": "Savings, bank linkage, livelihood training, and enterprise support." }
+    ],
+    "applicationProcess": [
+      { "title": "Contact local mission staff", "description": "Ask the Gram Panchayat or block mission team about SHGs." },
+      { "title": "Join or form SHG", "description": "Participate in group savings and meetings." },
+      { "title": "Access credit and training", "description": "Use SHG linkage for livelihood activities." }
+    ],
+    "documents": ["Identity proof", "Address proof", "Bank account", "SHG membership details"],
+    "applicationUrl": "https://nrlm.gov.in/",
+    "helplineNumber": "Contact district mission office",
+    "isActive": true,
+    "tags": ["women", "shg", "rural", "livelihood"],
+    "lastUpdated": "2026-04-26",
+    "sourceUrl": "https://nrlm.gov.in/"
+  },
+  {
+    "id": "MGNREGA-009",
+    "name": "MGNREGA",
+    "ministry": "Ministry of Rural Development",
+    "category": "labour",
+    "subCategory": "Rural wage employment",
+    "description": "Legal entitlement to demand wage employment for rural households.",
+    "descriptionDetailed": "MGNREGA provides wage employment on demand to adult members of rural households willing to do unskilled manual work.",
+    "eligibility": {
+      "age": { "min": 18 },
+      "states": ["all"],
+      "occupations": ["farmer", "agricultural_labourer", "construction_worker", "unemployed", "other"],
+      "incomeRanges": ["below_50000", "50000_100000", "100000_200000"],
+      "caste": ["SC", "ST", "OBC", "General"],
+      "landHolding": ["landless", "below_1acre", "1_2acres", "2_5acres"],
+      "notes": ["Applicant must be an adult member of a rural household.", "Work is requested through a job card."]
+    },
+    "benefits": [
+      { "title": "Wage employment", "amount": "Up to 100 days/household/year", "description": "Wages are paid for approved unskilled manual work." }
+    ],
+    "applicationProcess": [
+      { "title": "Apply for job card", "description": "Submit household details to Gram Panchayat." },
+      { "title": "Demand work", "description": "Request work when needed through the Panchayat." },
+      { "title": "Track payments", "description": "Track muster roll and payment status on the official portal." }
+    ],
+    "documents": ["Identity proof", "Address proof", "Photograph", "Bank account"],
+    "applicationUrl": "https://nrega.nic.in/",
+    "helplineNumber": "Contact Gram Panchayat / district programme officer",
+    "isActive": true,
+    "tags": ["employment", "rural", "wages", "job card"],
+    "lastUpdated": "2026-04-26",
+    "sourceUrl": "https://nrega.nic.in/"
+  },
+  {
+    "id": "E-SHRAM-010",
+    "name": "e-Shram Card",
+    "ministry": "Ministry of Labour and Employment",
+    "category": "labour",
+    "subCategory": "Unorganised worker registration",
+    "description": "National database registration for unorganised workers.",
+    "descriptionDetailed": "e-Shram registers unorganised workers so they can be connected to social security and welfare benefits.",
+    "eligibility": {
+      "age": { "min": 16, "max": 59 },
+      "states": ["all"],
+      "occupations": ["farmer", "agricultural_labourer", "fisherman", "artisan", "construction_worker", "domestic_worker", "small_business", "other"],
+      "incomeRanges": ["below_50000", "50000_100000", "100000_200000"],
+      "caste": ["SC", "ST", "OBC", "General"],
+      "landHolding": [],
+      "notes": ["Worker should be in the unorganised sector.", "Applicant should not be a member of EPFO/ESIC/NPS government-funded coverage."]
+    },
+    "benefits": [
+      { "title": "Worker registration", "amount": "UAN card", "description": "Connects eligible workers to social security delivery." }
+    ],
+    "applicationProcess": [
+      { "title": "Register on portal", "description": "Use self-registration or visit a CSC." },
+      { "title": "Complete verification", "description": "Provide required mobile and identity details on the official portal." },
+      { "title": "Download card", "description": "Download the e-Shram card after registration." }
+    ],
+    "documents": ["Identity proof", "Mobile number", "Bank account", "Occupation details"],
+    "applicationUrl": "https://eshram.gov.in/",
+    "helplineNumber": "14434 / 1800-889-6811",
+    "isActive": true,
+    "tags": ["unorganised worker", "labour", "card", "social security"],
+    "lastUpdated": "2026-04-26",
+    "sourceUrl": "https://eshram.gov.in/e-shram-objectives"
+  },
+  {
+    "id": "PMFBY-011",
+    "name": "Pradhan Mantri Fasal Bima Yojana",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "category": "agriculture",
+    "subCategory": "Crop insurance",
+    "description": "Crop insurance against notified natural risks for notified crops.",
+    "descriptionDetailed": "PMFBY provides crop insurance for farmers growing notified crops in notified areas, including sharecroppers and tenant farmers with required documents.",
+    "eligibility": {
+      "age": { "min": 18 },
+      "states": ["all"],
+      "occupations": ["farmer"],
+      "incomeRanges": ["below_50000", "50000_100000", "100000_200000", "200000_500000"],
+      "caste": ["SC", "ST", "OBC", "General"],
+      "landHolding": ["below_1acre", "1_2acres", "2_5acres", "above_5acres"],
+      "notes": ["Farmer must have insurable interest in a notified crop and area.", "Enrollment is season-bound and optional for farmers as per current guidelines."]
+    },
+    "benefits": [
+      { "title": "Crop risk cover", "amount": "Premium capped by crop season", "description": "Farmer premium is capped for major crop categories; claims depend on notified loss assessment." }
+    ],
+    "applicationProcess": [
+      { "title": "Check crop notification", "description": "Confirm crop, season, and area on PMFBY portal." },
+      { "title": "Enroll before cut-off", "description": "Apply online, through bank, or CSC before season deadline." },
+      { "title": "Report losses quickly", "description": "Use portal/helpline/insurer process for localized losses." }
+    ],
+    "documents": ["Land record or tenancy document", "Crop sowing declaration", "Bank account", "Identity proof"],
+    "applicationUrl": "https://pmfby.gov.in/",
+    "helplineNumber": "14447",
+    "isActive": true,
+    "tags": ["farmer", "crop", "insurance", "climate"],
+    "lastUpdated": "2026-04-26",
+    "sourceUrl": "https://pmfby.gov.in/pdf/Revamped%20OGs_Final.pdf"
+  },
+  {
+    "id": "DDU-GKY-012",
+    "name": "Deen Dayal Upadhyaya Grameen Kaushalya Yojana",
+    "ministry": "Ministry of Rural Development",
+    "category": "skill",
+    "subCategory": "Rural skill training",
+    "description": "Placement-linked skill training for rural poor youth.",
+    "descriptionDetailed": "DDU-GKY trains rural youth from poor households and links them with jobs that provide regular wages.",
+    "eligibility": {
+      "age": { "min": 15, "max": 35 },
+      "states": ["all"],
+      "occupations": ["student", "unemployed", "agricultural_labourer", "other"],
+      "incomeRanges": ["below_50000", "50000_100000", "100000_200000"],
+      "caste": ["SC", "ST", "OBC", "General"],
+      "landHolding": ["landless", "below_1acre", "1_2acres"],
+      "notes": ["Designed for rural poor youth.", "Upper age relaxation may apply for women and vulnerable groups."]
+    },
+    "benefits": [
+      { "title": "Skill training", "amount": "Free training and placement support", "description": "Training, counselling, and placement-linked support." }
+    ],
+    "applicationProcess": [
+      { "title": "Find training centre", "description": "Use DDU-GKY resources or contact district rural livelihood mission." },
+      { "title": "Register for course", "description": "Choose a suitable trade and complete enrollment." },
+      { "title": "Complete placement support", "description": "Attend training, assessment, and placement activities." }
+    ],
+    "documents": ["Identity proof", "Address proof", "Age proof", "Education proof", "BPL/SECC or relevant proof"],
+    "applicationUrl": "https://ddugky.gov.in/",
+    "helplineNumber": "Contact state rural livelihood mission",
+    "isActive": true,
+    "tags": ["skill", "youth", "rural", "jobs"],
+    "lastUpdated": "2026-04-26",
+    "sourceUrl": "https://ddugky.gov.in/"
+  },
+  {
+    "id": "IGNOAPS-013",
+    "name": "Indira Gandhi National Old Age Pension Scheme",
+    "ministry": "Ministry of Rural Development",
+    "category": "pension",
+    "subCategory": "Old age pension",
+    "description": "Monthly pension support for eligible older persons from BPL households.",
+    "descriptionDetailed": "IGNOAPS provides central pension assistance for people aged 60 and above who belong to BPL households, with states adding their contribution.",
+    "eligibility": {
+      "age": { "min": 60 },
+      "states": ["all"],
+      "occupations": ["farmer", "agricultural_labourer", "fisherman", "artisan", "construction_worker", "domestic_worker", "small_business", "unemployed", "other"],
+      "incomeRanges": ["below_50000", "50000_100000"],
+      "caste": ["SC", "ST", "OBC", "General"],
+      "landHolding": ["landless", "below_1acre", "1_2acres"],
+      "notes": ["Applicant should be age 60 or above.", "Household should be below poverty line as per applicable criteria."]
+    },
+    "benefits": [
+      { "title": "Monthly pension", "amount": "Central share Rs. 200 to Rs. 500/month", "description": "State contribution can increase the pension amount." }
+    ],
+    "applicationProcess": [
+      { "title": "Contact local office", "description": "Apply through Gram Panchayat, municipality, or social welfare office." },
+      { "title": "Submit proof", "description": "Provide age, residence, income/BPL, and bank details." },
+      { "title": "Track pension", "description": "Track through state portal or NSAP reporting where available." }
+    ],
+    "documents": ["Age proof", "BPL/income proof", "Residence proof", "Bank account"],
+    "applicationUrl": "https://nsap.nic.in/",
+    "helplineNumber": "Contact district social welfare office",
+    "isActive": true,
+    "tags": ["pension", "old age", "bpl", "senior"],
+    "lastUpdated": "2026-04-26",
+    "sourceUrl": "https://nsap.nic.in/circular.do?method=faq"
+  },
+  {
+    "id": "PMKVY-014",
+    "name": "Pradhan Mantri Kaushal Vikas Yojana",
+    "ministry": "Ministry of Skill Development and Entrepreneurship",
+    "category": "skill",
+    "subCategory": "Skill certification",
+    "description": "Short-term skill training and certification for youth.",
+    "descriptionDetailed": "PMKVY helps youth access industry-relevant skill training, certification, and career pathways through approved skill centers.",
+    "eligibility": {
+      "age": { "min": 18, "max": 45 },
+      "states": ["all"],
+      "occupations": ["student", "unemployed", "artisan", "construction_worker", "domestic_worker", "other"],
+      "incomeRanges": ["below_50000", "50000_100000", "100000_200000", "200000_500000"],
+      "caste": ["SC", "ST", "OBC", "General"],
+      "landHolding": [],
+      "notes": ["Eligibility can vary by job role and training type.", "Candidate should meet age and course prerequisites."]
+    },
+    "benefits": [
+      { "title": "Training and certification", "amount": "Free/assisted training", "description": "Skill training, assessment, certification, and counselling." }
+    ],
+    "applicationProcess": [
+      { "title": "Find course", "description": "Use Skill India Digital or PMKVY resources." },
+      { "title": "Register with center", "description": "Choose a nearby training center or online course." },
+      { "title": "Complete assessment", "description": "Attend training and assessment for certification." }
+    ],
+    "documents": ["Identity proof", "Age proof", "Education proof", "Mobile number"],
+    "applicationUrl": "https://www.skillindiadigital.gov.in/",
+    "helplineNumber": "8800055555",
+    "isActive": true,
+    "tags": ["skill", "youth", "training", "certificate"],
+    "lastUpdated": "2026-04-26",
+    "sourceUrl": "https://www.pmkvyofficial.org/photos/General_document/PMKVY%204.0%20Guidelines.pdf"
+  },
+  {
+    "id": "SVANIDHI-015",
+    "name": "PM SVANidhi",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "category": "startup",
+    "subCategory": "Street vendor credit",
+    "description": "Collateral-free working capital loan support for street vendors.",
+    "descriptionDetailed": "PM SVANidhi supports eligible street vendors with working capital loans in progressive tranches and incentives for repayment and digital transactions.",
+    "eligibility": {
+      "age": { "min": 18 },
+      "states": ["all"],
+      "occupations": ["small_business", "artisan", "other"],
+      "incomeRanges": ["below_50000", "50000_100000", "100000_200000"],
+      "caste": ["SC", "ST", "OBC", "General"],
+      "landHolding": [],
+      "notes": ["Applicant should be an eligible street vendor or hawker.", "Certificate of vending, ID card, or Letter of Recommendation may be required."]
+    },
+    "benefits": [
+      { "title": "Working capital loan", "amount": "Up to Rs. 50,000 in tranches", "description": "Initial and repeat loans based on repayment history." }
+    ],
+    "applicationProcess": [
+      { "title": "Check vendor documents", "description": "Keep vending ID/certificate or request Letter of Recommendation." },
+      { "title": "Apply on portal", "description": "Submit application on PM SVANidhi portal." },
+      { "title": "Repay digitally", "description": "Timely repayment improves eligibility for next tranche." }
+    ],
+    "documents": ["Vending certificate/ID or LoR", "Identity proof", "Bank account", "Mobile number"],
+    "applicationUrl": "https://pmsvanidhi.mohua.gov.in/",
+    "helplineNumber": "1800-11-1979",
+    "isActive": true,
+    "tags": ["street vendor", "loan", "urban", "digital payments"],
+    "lastUpdated": "2026-04-26",
+    "sourceUrl": "https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=2225510"
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "name": "civicbridge",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "seed": "tsx scripts/seed_schemes.ts",
+    "embeddings": "tsx scripts/generate_embeddings.ts"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.15.0",
+    "@hookform/resolvers": "^3.3.4",
+    "@supabase/supabase-js": "^2.43.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "framer-motion": "^11.0.0",
+    "lucide-react": "^0.383.0",
+    "next": "^16.2.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.51.0",
+    "react-markdown": "^9.0.0",
+    "tailwind-merge": "^2.2.0",
+    "zod": "^3.22.0",
+    "zustand": "^4.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.1",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.4",
+    "postcss": "^8.5.10",
+    "tailwindcss": "^3.4.3",
+    "tsx": "^4.11.0",
+    "typescript": "^5.4.5"
+  },
+  "overrides": {
+    "postcss": "^8.5.10"
+  }
+}
