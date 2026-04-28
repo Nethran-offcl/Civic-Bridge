@@ -1,520 +1,1412 @@
 [
     {
-        "id":  "KA-GRUHA-LAKSHMI-001",
-        "name":  "Karnataka Gruha Lakshmi",
-        "ministry":  "Government of Karnataka",
-        "category":  "women",
-        "subCategory":  "Household income support",
-        "description":  "Monthly assistance for eligible woman head of household in Karnataka.",
-        "descriptionDetailed":  "Gruha Lakshmi is a Karnataka household support scheme focused on women heads of eligible families.",
-        "eligibility":  {
-                            "age":  {
-                                        "min":  18
-                                    },
-                            "states":  [
-                                           "Karnataka"
-                                       ],
-                            "gender":  "female",
-                            "occupations":  [
-                                                "farmer",
-                                                "agricultural_labourer",
-                                                "artisan",
-                                                "construction_worker",
-                                                "domestic_worker",
-                                                "small_business",
-                                                "unemployed",
-                                                "other"
-                                            ],
-                            "incomeRanges":  [
-                                                 "below_50000",
-                                                 "50000_100000",
-                                                 "100000_200000"
-                                             ],
-                            "caste":  [
-                                          "SC",
-                                          "ST",
-                                          "OBC",
-                                          "General"
-                                      ],
-                            "landHolding":  [
-                                                "landless",
-                                                "below_1acre",
-                                                "1_2acres"
-                                            ],
-                            "notes":  [
-                                          "Applicant should be the woman head of an eligible Karnataka household.",
-                                          "Household-level exclusions may apply."
-                                      ]
-                        },
-        "benefits":  [
-                         {
-                             "title":  "Monthly support",
-                             "amount":  "Rs. 2,000/month",
-                             "description":  "Paid to the eligible woman beneficiary."
-                         }
-                     ],
-        "applicationProcess":  [
-                                   {
-                                       "title":  "Check household eligibility",
-                                       "description":  "Confirm ration card and household details."
-                                   },
-                                   {
-                                       "title":  "Apply through Seva Sindhu",
-                                       "description":  "Use Seva Sindhu or local assisted centers."
-                                   },
-                                   {
-                                       "title":  "Track DBT",
-                                       "description":  "Check payment status after approval."
-                                   }
-                               ],
-        "documents":  [
-                          "Ration card",
-                          "Identity proof",
-                          "Bank account",
-                          "Mobile number"
-                      ],
-        "applicationUrl":  "https://sevasindhugs.karnataka.gov.in/",
-        "helplineNumber":  "1902",
-        "state":  "Karnataka",
-        "isActive":  true,
-        "tags":  [
-                     "karnataka",
-                     "women",
-                     "dbt",
-                     "household"
-                 ],
-        "lastUpdated":  "2026-04-26",
-        "sourceUrl":  "https://sevasindhugs.karnataka.gov.in/"
+        "id": "KA-GRUHA-LAKSHMI-001",
+        "name": "Karnataka Gruha Lakshmi",
+        "ministry": "Government of Karnataka",
+        "category": "women",
+        "subCategory": "Household income support",
+        "description": "Monthly assistance for eligible woman head of household in Karnataka.",
+        "descriptionDetailed": "Gruha Lakshmi is a Karnataka household support scheme focused on women heads of eligible families.",
+        "eligibility": {
+            "age": {
+                "min": 18
+            },
+            "states": [
+                "Karnataka"
+            ],
+            "gender": "female",
+            "occupations": [
+                "farmer",
+                "agricultural_labourer",
+                "artisan",
+                "construction_worker",
+                "domestic_worker",
+                "small_business",
+                "unemployed",
+                "other"
+            ],
+            "incomeRanges": [
+                "below_50000",
+                "50000_100000",
+                "100000_200000"
+            ],
+            "caste": [
+                "SC",
+                "ST",
+                "OBC",
+                "General"
+            ],
+            "landHolding": [
+                "landless",
+                "below_1acre",
+                "1_2acres"
+            ],
+            "notes": [
+                "Applicant should be the woman head of an eligible Karnataka household.",
+                "Household-level exclusions may apply."
+            ]
+        },
+        "benefits": [
+            {
+                "title": "Monthly support",
+                "amount": "Rs. 2,000/month",
+                "description": "Paid to the eligible woman beneficiary."
+            }
+        ],
+        "applicationProcess": [
+            {
+                "title": "Check household eligibility",
+                "description": "Confirm ration card and household details."
+            },
+            {
+                "title": "Apply through Seva Sindhu",
+                "description": "Use Seva Sindhu or local assisted centers."
+            },
+            {
+                "title": "Track DBT",
+                "description": "Check payment status after approval."
+            }
+        ],
+        "documents": [
+            "Ration card",
+            "Identity proof",
+            "Bank account",
+            "Mobile number"
+        ],
+        "applicationUrl": "https://sevasindhugs.karnataka.gov.in/",
+        "helplineNumber": "1902",
+        "state": "Karnataka",
+        "isActive": true,
+        "tags": [
+            "karnataka",
+            "women",
+            "dbt",
+            "household"
+        ],
+        "lastUpdated": "2026-04-26",
+        "sourceUrl": "https://sevasindhugs.karnataka.gov.in/"
     },
     {
-        "id":  "KA-RAITHA-SIRI-002",
-        "name":  "Karnataka Raitha Siri",
-        "ministry":  "Department of Agriculture, Government of Karnataka",
-        "category":  "agriculture",
-        "subCategory":  "Millet cultivation support",
-        "description":  "Incentive support for eligible millet-growing farmers in Karnataka.",
-        "descriptionDetailed":  "Raitha Siri supports cultivation of nutri cereals/millets by providing assistance per hectare, subject to state guidelines and DBT verification.",
-        "eligibility":  {
-                            "age":  {
-                                        "min":  18
-                                    },
-                            "states":  [
-                                           "Karnataka"
-                                       ],
-                            "occupations":  [
-                                                "farmer"
-                                            ],
-                            "incomeRanges":  [
-                                                 "below_50000",
-                                                 "50000_100000",
-                                                 "100000_200000",
-                                                 "200000_500000"
-                                             ],
-                            "caste":  [
-                                          "SC",
-                                          "ST",
-                                          "OBC",
-                                          "General"
-                                      ],
-                            "landHolding":  [
-                                                "below_1acre",
-                                                "1_2acres",
-                                                "2_5acres"
-                                            ],
-                            "notes":  [
-                                          "Farmer should cultivate eligible millet/nutri cereal crops.",
-                                          "Assistance is limited by area and state budget rules."
-                                      ]
-                        },
-        "benefits":  [
-                         {
-                             "title":  "Millet cultivation incentive",
-                             "amount":  "Up to Rs. 10,000/hectare",
-                             "description":  "Support may be limited to a maximum eligible area."
-                         }
-                     ],
-        "applicationProcess":  [
-                                   {
-                                       "title":  "Contact Raitha Samparka Kendra",
-                                       "description":  "Check current notification and crop eligibility."
-                                   },
-                                   {
-                                       "title":  "Submit crop details",
-                                       "description":  "Provide land and crop details for DBT verification."
-                                   },
-                                   {
-                                       "title":  "Track payment",
-                                       "description":  "Follow up with agriculture department or local center."
-                                   }
-                               ],
-        "documents":  [
-                          "Land record",
-                          "Crop details",
-                          "Identity proof",
-                          "Bank account"
-                      ],
-        "applicationUrl":  "https://raitamitra.karnataka.gov.in/",
-        "helplineNumber":  "Contact Raitha Samparka Kendra",
-        "state":  "Karnataka",
-        "isActive":  true,
-        "tags":  [
-                     "karnataka",
-                     "farmer",
-                     "millets",
-                     "dbt"
-                 ],
-        "lastUpdated":  "2026-04-26",
-        "sourceUrl":  "https://fpibengaluru.karnataka.gov.in/uploads/media_to_upload1762764053.pdf"
+        "id": "KA-RAITHA-SIRI-002",
+        "name": "Karnataka Raitha Siri",
+        "ministry": "Department of Agriculture, Government of Karnataka",
+        "category": "agriculture",
+        "subCategory": "Millet cultivation support",
+        "description": "Incentive support for eligible millet-growing farmers in Karnataka.",
+        "descriptionDetailed": "Raitha Siri supports cultivation of nutri cereals/millets by providing assistance per hectare, subject to state guidelines and DBT verification.",
+        "eligibility": {
+            "age": {
+                "min": 18
+            },
+            "states": [
+                "Karnataka"
+            ],
+            "occupations": [
+                "farmer"
+            ],
+            "incomeRanges": [
+                "below_50000",
+                "50000_100000",
+                "100000_200000",
+                "200000_500000"
+            ],
+            "caste": [
+                "SC",
+                "ST",
+                "OBC",
+                "General"
+            ],
+            "landHolding": [
+                "below_1acre",
+                "1_2acres",
+                "2_5acres"
+            ],
+            "notes": [
+                "Farmer should cultivate eligible millet/nutri cereal crops.",
+                "Assistance is limited by area and state budget rules."
+            ]
+        },
+        "benefits": [
+            {
+                "title": "Millet cultivation incentive",
+                "amount": "Up to Rs. 10,000/hectare",
+                "description": "Support may be limited to a maximum eligible area."
+            }
+        ],
+        "applicationProcess": [
+            {
+                "title": "Contact Raitha Samparka Kendra",
+                "description": "Check current notification and crop eligibility."
+            },
+            {
+                "title": "Submit crop details",
+                "description": "Provide land and crop details for DBT verification."
+            },
+            {
+                "title": "Track payment",
+                "description": "Follow up with agriculture department or local center."
+            }
+        ],
+        "documents": [
+            "Land record",
+            "Crop details",
+            "Identity proof",
+            "Bank account"
+        ],
+        "applicationUrl": "https://raitamitra.karnataka.gov.in/",
+        "helplineNumber": "Contact Raitha Samparka Kendra",
+        "state": "Karnataka",
+        "isActive": true,
+        "tags": [
+            "karnataka",
+            "farmer",
+            "millets",
+            "dbt"
+        ],
+        "lastUpdated": "2026-04-26",
+        "sourceUrl": "https://fpibengaluru.karnataka.gov.in/uploads/media_to_upload1762764053.pdf"
     },
     {
-        "id":  "KA-SSP-003",
-        "name":  "Karnataka State Scholarship Portal",
-        "ministry":  "Government of Karnataka",
-        "category":  "education",
-        "subCategory":  "State scholarships",
-        "description":  "Karnataka portal for pre-matric and post-matric scholarship applications.",
-        "descriptionDetailed":  "The State Scholarship Portal lets eligible Karnataka students apply for department scholarships and track verification.",
-        "eligibility":  {
-                            "age":  {
-                                        "min":  10,
-                                        "max":  35
-                                    },
-                            "states":  [
-                                           "Karnataka"
-                                       ],
-                            "occupations":  [
-                                                "student"
-                                            ],
-                            "incomeRanges":  [
-                                                 "below_50000",
-                                                 "50000_100000",
-                                                 "100000_200000",
-                                                 "200000_500000"
-                                             ],
-                            "caste":  [
-                                          "SC",
-                                          "ST",
-                                          "OBC",
-                                          "General"
-                                      ],
-                            "landHolding":  [
-
-                                            ],
-                            "notes":  [
-                                          "Eligibility depends on course, department, category, and income rules.",
-                                          "Student must usually be enrolled in a recognized institution."
-                                      ]
-                        },
-        "benefits":  [
-                         {
-                             "title":  "Scholarship assistance",
-                             "amount":  "Varies by department",
-                             "description":  "Fee and maintenance support based on the selected scheme."
-                         }
-                     ],
-        "applicationProcess":  [
-                                   {
-                                       "title":  "Create SSP profile",
-                                       "description":  "Register on the Karnataka SSP portal."
-                                   },
-                                   {
-                                       "title":  "Select eligible scholarship",
-                                       "description":  "Fill education, income, and category details."
-                                   },
-                                   {
-                                       "title":  "Track verification",
-                                       "description":  "Monitor institution and department verification online."
-                                   }
-                               ],
-        "documents":  [
-                          "Student ID",
-                          "Income certificate",
-                          "Caste certificate if applicable",
-                          "Previous marksheet",
-                          "Bank account"
-                      ],
-        "applicationUrl":  "https://ssp.postmatric.karnataka.gov.in/",
-        "helplineNumber":  "1902",
-        "state":  "Karnataka",
-        "isActive":  true,
-        "tags":  [
-                     "karnataka",
-                     "student",
-                     "scholarship",
-                     "education"
-                 ],
-        "lastUpdated":  "2026-04-26",
-        "sourceUrl":  "https://ssp.postmatric.karnataka.gov.in/"
+        "id": "KA-SSP-003",
+        "name": "Karnataka State Scholarship Portal",
+        "ministry": "Government of Karnataka",
+        "category": "education",
+        "subCategory": "State scholarships",
+        "description": "Karnataka portal for pre-matric and post-matric scholarship applications.",
+        "descriptionDetailed": "The State Scholarship Portal lets eligible Karnataka students apply for department scholarships and track verification.",
+        "eligibility": {
+            "age": {
+                "min": 10,
+                "max": 35
+            },
+            "states": [
+                "Karnataka"
+            ],
+            "occupations": [
+                "student"
+            ],
+            "incomeRanges": [
+                "below_50000",
+                "50000_100000",
+                "100000_200000",
+                "200000_500000"
+            ],
+            "caste": [
+                "SC",
+                "ST",
+                "OBC",
+                "General"
+            ],
+            "landHolding": [],
+            "notes": [
+                "Eligibility depends on course, department, category, and income rules.",
+                "Student must usually be enrolled in a recognized institution."
+            ]
+        },
+        "benefits": [
+            {
+                "title": "Scholarship assistance",
+                "amount": "Varies by department",
+                "description": "Fee and maintenance support based on the selected scheme."
+            }
+        ],
+        "applicationProcess": [
+            {
+                "title": "Create SSP profile",
+                "description": "Register on the Karnataka SSP portal."
+            },
+            {
+                "title": "Select eligible scholarship",
+                "description": "Fill education, income, and category details."
+            },
+            {
+                "title": "Track verification",
+                "description": "Monitor institution and department verification online."
+            }
+        ],
+        "documents": [
+            "Student ID",
+            "Income certificate",
+            "Caste certificate if applicable",
+            "Previous marksheet",
+            "Bank account"
+        ],
+        "applicationUrl": "https://ssp.postmatric.karnataka.gov.in/",
+        "helplineNumber": "1902",
+        "state": "Karnataka",
+        "isActive": true,
+        "tags": [
+            "karnataka",
+            "student",
+            "scholarship",
+            "education"
+        ],
+        "lastUpdated": "2026-04-26",
+        "sourceUrl": "https://ssp.postmatric.karnataka.gov.in/"
     },
     {
-        "id":  "KA-BOCW-004",
-        "name":  "Karnataka Construction Worker Welfare Benefits",
-        "ministry":  "Karnataka Building and Other Construction Workers Welfare Board",
-        "category":  "labour",
-        "subCategory":  "Worker welfare",
-        "description":  "Welfare support for registered building and construction workers in Karnataka.",
-        "descriptionDetailed":  "Registered construction workers can access welfare benefits such as education, medical, pension, and tool assistance depending on board rules.",
-        "eligibility":  {
-                            "age":  {
-                                        "min":  18,
-                                        "max":  60
-                                    },
-                            "states":  [
-                                           "Karnataka"
-                                       ],
-                            "occupations":  [
-                                                "construction_worker"
-                                            ],
-                            "incomeRanges":  [
-                                                 "below_50000",
-                                                 "50000_100000",
-                                                 "100000_200000",
-                                                 "200000_500000"
-                                             ],
-                            "caste":  [
-                                          "SC",
-                                          "ST",
-                                          "OBC",
-                                          "General"
-                                      ],
-                            "landHolding":  [
-
-                                            ],
-                            "notes":  [
-                                          "Applicant should be a registered construction worker.",
-                                          "Workdays and contribution/registration rules may apply."
-                                      ]
-                        },
-        "benefits":  [
-                         {
-                             "title":  "Worker welfare support",
-                             "amount":  "Varies by benefit",
-                             "description":  "Education, medical, pension, and other board benefits."
-                         }
-                     ],
-        "applicationProcess":  [
-                                   {
-                                       "title":  "Register as worker",
-                                       "description":  "Apply through the labour department/board system."
-                                   },
-                                   {
-                                       "title":  "Select benefit",
-                                       "description":  "Choose the benefit category and submit proof."
-                                   },
-                                   {
-                                       "title":  "Track approval",
-                                       "description":  "Follow up through the portal or district labour office."
-                                   }
-                               ],
-        "documents":  [
-                          "Identity proof",
-                          "Age proof",
-                          "Address proof",
-                          "Employment certificate",
-                          "Bank account"
-                      ],
-        "applicationUrl":  "https://labour.karnataka.gov.in/",
-        "helplineNumber":  "155214",
-        "state":  "Karnataka",
-        "isActive":  true,
-        "tags":  [
-                     "karnataka",
-                     "construction",
-                     "labour",
-                     "welfare"
-                 ],
-        "lastUpdated":  "2026-04-26",
-        "sourceUrl":  "https://labour.karnataka.gov.in/"
+        "id": "KA-BOCW-004",
+        "name": "Karnataka Construction Worker Welfare Benefits",
+        "ministry": "Karnataka Building and Other Construction Workers Welfare Board",
+        "category": "labour",
+        "subCategory": "Worker welfare",
+        "description": "Welfare support for registered building and construction workers in Karnataka.",
+        "descriptionDetailed": "Registered construction workers can access welfare benefits such as education, medical, pension, and tool assistance depending on board rules.",
+        "eligibility": {
+            "age": {
+                "min": 18,
+                "max": 60
+            },
+            "states": [
+                "Karnataka"
+            ],
+            "occupations": [
+                "construction_worker"
+            ],
+            "incomeRanges": [
+                "below_50000",
+                "50000_100000",
+                "100000_200000",
+                "200000_500000"
+            ],
+            "caste": [
+                "SC",
+                "ST",
+                "OBC",
+                "General"
+            ],
+            "landHolding": [],
+            "notes": [
+                "Applicant should be a registered construction worker.",
+                "Workdays and contribution/registration rules may apply."
+            ]
+        },
+        "benefits": [
+            {
+                "title": "Worker welfare support",
+                "amount": "Varies by benefit",
+                "description": "Education, medical, pension, and other board benefits."
+            }
+        ],
+        "applicationProcess": [
+            {
+                "title": "Register as worker",
+                "description": "Apply through the labour department/board system."
+            },
+            {
+                "title": "Select benefit",
+                "description": "Choose the benefit category and submit proof."
+            },
+            {
+                "title": "Track approval",
+                "description": "Follow up through the portal or district labour office."
+            }
+        ],
+        "documents": [
+            "Identity proof",
+            "Age proof",
+            "Address proof",
+            "Employment certificate",
+            "Bank account"
+        ],
+        "applicationUrl": "https://labour.karnataka.gov.in/",
+        "helplineNumber": "155214",
+        "state": "Karnataka",
+        "isActive": true,
+        "tags": [
+            "karnataka",
+            "construction",
+            "labour",
+            "welfare"
+        ],
+        "lastUpdated": "2026-04-26",
+        "sourceUrl": "https://labour.karnataka.gov.in/"
     },
     {
-        "id":  "KA-SANJEEVINI-005",
-        "name":  "Sanjeevini Karnataka Rural Livelihood Mission",
-        "ministry":  "Skill Development, Entrepreneurship and Livelihood Department, Karnataka",
-        "category":  "women",
-        "subCategory":  "SHG livelihood support",
-        "description":  "Rural livelihood support through women self-help groups in Karnataka.",
-        "descriptionDetailed":  "Sanjeevini-KSRLPS supports rural poor households through SHGs, livelihood clusters, producer companies, and financial inclusion.",
-        "eligibility":  {
-                            "age":  {
-                                        "min":  18
-                                    },
-                            "states":  [
-                                           "Karnataka"
-                                       ],
-                            "gender":  "female",
-                            "occupations":  [
-                                                "farmer",
-                                                "agricultural_labourer",
-                                                "artisan",
-                                                "domestic_worker",
-                                                "small_business",
-                                                "unemployed",
-                                                "other"
-                                            ],
-                            "incomeRanges":  [
-                                                 "below_50000",
-                                                 "50000_100000",
-                                                 "100000_200000"
-                                             ],
-                            "caste":  [
-                                          "SC",
-                                          "ST",
-                                          "OBC",
-                                          "General"
-                                      ],
-                            "landHolding":  [
-                                                "landless",
-                                                "below_1acre",
-                                                "1_2acres",
-                                                "2_5acres"
-                                            ],
-                            "notes":  [
-                                          "Usually accessed through SHG membership and local mission structures.",
-                                          "Support differs by block and livelihood programme."
-                                      ]
-                        },
-        "benefits":  [
-                         {
-                             "title":  "SHG livelihood support",
-                             "amount":  "Credit, training, and market linkage",
-                             "description":  "Support for farm and non-farm livelihoods through community institutions."
-                         }
-                     ],
-        "applicationProcess":  [
-                                   {
-                                       "title":  "Find local SHG",
-                                       "description":  "Contact Gram Panchayat or KSRLPS block team."
-                                   },
-                                   {
-                                       "title":  "Join community process",
-                                       "description":  "Participate in SHG savings, meetings, and livelihood planning."
-                                   },
-                                   {
-                                       "title":  "Access support",
-                                       "description":  "Use SHG linkage for credit, training, and market support."
-                                   }
-                               ],
-        "documents":  [
-                          "Identity proof",
-                          "Address proof",
-                          "Bank account",
-                          "SHG membership details"
-                      ],
-        "applicationUrl":  "https://ksrlps.karnataka.gov.in/english",
-        "helplineNumber":  "Contact district KSRLPS office",
-        "state":  "Karnataka",
-        "isActive":  true,
-        "tags":  [
-                     "karnataka",
-                     "women",
-                     "shg",
-                     "livelihood"
-                 ],
-        "lastUpdated":  "2026-04-26",
-        "sourceUrl":  "https://ksrlps.karnataka.gov.in/english"
+        "id": "KA-SANJEEVINI-005",
+        "name": "Sanjeevini Karnataka Rural Livelihood Mission",
+        "ministry": "Skill Development, Entrepreneurship and Livelihood Department, Karnataka",
+        "category": "women",
+        "subCategory": "SHG livelihood support",
+        "description": "Rural livelihood support through women self-help groups in Karnataka.",
+        "descriptionDetailed": "Sanjeevini-KSRLPS supports rural poor households through SHGs, livelihood clusters, producer companies, and financial inclusion.",
+        "eligibility": {
+            "age": {
+                "min": 18
+            },
+            "states": [
+                "Karnataka"
+            ],
+            "gender": "female",
+            "occupations": [
+                "farmer",
+                "agricultural_labourer",
+                "artisan",
+                "domestic_worker",
+                "small_business",
+                "unemployed",
+                "other"
+            ],
+            "incomeRanges": [
+                "below_50000",
+                "50000_100000",
+                "100000_200000"
+            ],
+            "caste": [
+                "SC",
+                "ST",
+                "OBC",
+                "General"
+            ],
+            "landHolding": [
+                "landless",
+                "below_1acre",
+                "1_2acres",
+                "2_5acres"
+            ],
+            "notes": [
+                "Usually accessed through SHG membership and local mission structures.",
+                "Support differs by block and livelihood programme."
+            ]
+        },
+        "benefits": [
+            {
+                "title": "SHG livelihood support",
+                "amount": "Credit, training, and market linkage",
+                "description": "Support for farm and non-farm livelihoods through community institutions."
+            }
+        ],
+        "applicationProcess": [
+            {
+                "title": "Find local SHG",
+                "description": "Contact Gram Panchayat or KSRLPS block team."
+            },
+            {
+                "title": "Join community process",
+                "description": "Participate in SHG savings, meetings, and livelihood planning."
+            },
+            {
+                "title": "Access support",
+                "description": "Use SHG linkage for credit, training, and market support."
+            }
+        ],
+        "documents": [
+            "Identity proof",
+            "Address proof",
+            "Bank account",
+            "SHG membership details"
+        ],
+        "applicationUrl": "https://ksrlps.karnataka.gov.in/english",
+        "helplineNumber": "Contact district KSRLPS office",
+        "state": "Karnataka",
+        "isActive": true,
+        "tags": [
+            "karnataka",
+            "women",
+            "shg",
+            "livelihood"
+        ],
+        "lastUpdated": "2026-04-26",
+        "sourceUrl": "https://ksrlps.karnataka.gov.in/english"
     },
     {
-        "id":  "state_ka_raitha_vidya_nidhi",
-        "name":  "Mukhyamantri Raitha Vidya Nidhi",
-        "ministry":  "Government of Karnataka",
-        "category":  "education",
-        "description":  "Scholarship scheme to promote higher education for the children of farmers.",
-        "descriptionDetailed":  "Aims to encourage the children of farmers to pursue higher education. Scholarships ranging from ₹2,000 to ₹11,000 are provided via Direct Benefit Transfer to students who have passed 10th standard and enrolled in recognized educational institutions.",
-        "eligibility":  {
-                            "age":  {
-                                        "min":  14
-                                    },
-                            "states":  [
-                                           "Karnataka"
-                                       ],
-                            "occupations":  [
-                                                "student"
-                                            ],
-                            "notes":  [
-                                          "Applicant must be a child of a farmer.",
-                                          "Must be enrolled in PUC, ITI, Diploma, Degree, or postgraduate courses."
-                                      ]
-                        },
-        "benefits":  [
-                         {
-                             "title":  "Scholarship",
-                             "amount":  "₹2,000 - ₹11,000 annually",
-                             "description":  "Direct Benefit Transfer based on the course pursued."
-                         }
-                     ],
-        "applicationProcess":  [
-                                   {
-                                       "title":  "Online via SSP",
-                                       "description":  "Apply through the State Scholarship Portal using Farmer ID / FID and Aadhaar."
-                                   }
-                               ],
-        "documents":  [
-                          "Aadhaar",
-                          "Student FID",
-                          "Fee Receipt",
-                          "Mark sheet"
-                      ],
-        "isActive":  true,
-        "tags":  [
-                     "farmer",
-                     "student",
-                     "scholarship",
-                     "education"
-                 ],
-        "lastUpdated":  "2024-03-01T00:00:00Z"
+        "id": "state_ka_raitha_vidya_nidhi",
+        "name": "Mukhyamantri Raitha Vidya Nidhi",
+        "ministry": "Government of Karnataka",
+        "category": "education",
+        "description": "Scholarship scheme to promote higher education for the children of farmers.",
+        "descriptionDetailed": "Aims to encourage the children of farmers to pursue higher education. Scholarships ranging from ₹2,000 to ₹11,000 are provided via Direct Benefit Transfer to students who have passed 10th standard and enrolled in recognized educational institutions.",
+        "eligibility": {
+            "age": {
+                "min": 14
+            },
+            "states": [
+                "Karnataka"
+            ],
+            "occupations": [
+                "student"
+            ],
+            "notes": [
+                "Applicant must be a child of a farmer.",
+                "Must be enrolled in PUC, ITI, Diploma, Degree, or postgraduate courses."
+            ]
+        },
+        "benefits": [
+            {
+                "title": "Scholarship",
+                "amount": "₹2,000 - ₹11,000 annually",
+                "description": "Direct Benefit Transfer based on the course pursued."
+            }
+        ],
+        "applicationProcess": [
+            {
+                "title": "Online via SSP",
+                "description": "Apply through the State Scholarship Portal using Farmer ID / FID and Aadhaar."
+            }
+        ],
+        "documents": [
+            "Aadhaar",
+            "Student FID",
+            "Fee Receipt",
+            "Mark sheet"
+        ],
+        "isActive": true,
+        "tags": [
+            "farmer",
+            "student",
+            "scholarship",
+            "education"
+        ],
+        "lastUpdated": "2024-03-01T00:00:00Z"
     },
     {
-        "id":  "state_ka_yuva_nidhi",
-        "name":  "Karnataka Yuva Nidhi",
-        "ministry":  "Skill Development Department",
-        "category":  "skill",
-        "description":  "Unemployment allowance for graduates and diploma holders in Karnataka.",
-        "descriptionDetailed":  "Provides financial assistance to unemployed youth who have completed their graduation or diploma and remain unemployed for 6 months post graduation. Support is provided for up to 2 years.",
-        "eligibility":  {
-                            "age":  {
-                                        "min":  18,
-                                        "max":  35
-                                    },
-                            "states":  [
-                                           "Karnataka"
-                                       ],
-                            "occupations":  [
-                                                "unemployed"
-                                            ],
-                            "notes":  [
-                                          "Must have completed a degree/diploma.",
-                                          "Assistance stops if employment is found or after 2 years."
-                                      ]
-                        },
-        "benefits":  [
-                         {
-                             "title":  "Graduates Allowance",
-                             "amount":  "₹3,000 per month",
-                             "description":  "For unemployed degree holders."
-                         },
-                         {
-                             "title":  "Diploma Allowance",
-                             "amount":  "₹1,500 per month",
-                             "description":  "For unemployed diploma holders."
-                         }
-                     ],
-        "applicationProcess":  [
-                                   {
-                                       "title":  "Seva Sindhu",
-                                       "description":  "Register on Seva Sindhu platform using certificates and Aadhaar."
-                                   }
-                               ],
-        "documents":  [
-                          "Aadhaar",
-                          "Degree/Diploma Certificate"
-                      ],
-        "isActive":  true,
-        "tags":  [
-                     "youth",
-                     "unemployed",
-                     "allowance",
-                     "graduates"
-                 ],
-        "lastUpdated":  "2024-03-01T00:00:00Z"
+        "id": "state_ka_yuva_nidhi",
+        "name": "Karnataka Yuva Nidhi",
+        "ministry": "Skill Development Department",
+        "category": "skill",
+        "description": "Unemployment allowance for graduates and diploma holders in Karnataka.",
+        "descriptionDetailed": "Provides financial assistance to unemployed youth who have completed their graduation or diploma and remain unemployed for 6 months post graduation. Support is provided for up to 2 years.",
+        "eligibility": {
+            "age": {
+                "min": 18,
+                "max": 35
+            },
+            "states": [
+                "Karnataka"
+            ],
+            "occupations": [
+                "unemployed"
+            ],
+            "notes": [
+                "Must have completed a degree/diploma.",
+                "Assistance stops if employment is found or after 2 years."
+            ]
+        },
+        "benefits": [
+            {
+                "title": "Graduates Allowance",
+                "amount": "₹3,000 per month",
+                "description": "For unemployed degree holders."
+            },
+            {
+                "title": "Diploma Allowance",
+                "amount": "₹1,500 per month",
+                "description": "For unemployed diploma holders."
+            }
+        ],
+        "applicationProcess": [
+            {
+                "title": "Seva Sindhu",
+                "description": "Register on Seva Sindhu platform using certificates and Aadhaar."
+            }
+        ],
+        "documents": [
+            "Aadhaar",
+            "Degree/Diploma Certificate"
+        ],
+        "isActive": true,
+        "tags": [
+            "youth",
+            "unemployed",
+            "allowance",
+            "graduates"
+        ],
+        "lastUpdated": "2024-03-01T00:00:00Z"
+    },
+    {
+        "id": "TN-KALAIGNAR-URIMAI-001",
+        "name": "Kalaignar Magalir Urimai Thittam",
+        "ministry": "Government of Tamil Nadu",
+        "category": "women",
+        "subCategory": "Financial Assistance",
+        "description": "Monthly financial assistance of ₹1,000 for women heads of eligible households in Tamil Nadu.",
+        "descriptionDetailed": "A flagship scheme of Tamil Nadu providing ₹1,000 per month to women heads of households to recognize their lifelong work and improve household livelihoods.",
+        "eligibility": {
+            "age": {
+                "min": 21,
+                "max": 99
+            },
+            "states": [
+                "Tamil Nadu"
+            ],
+            "gender": "female",
+            "occupations": [
+                "unemployed",
+                "domestic_worker",
+                "artisan",
+                "agricultural_labourer",
+                "small_business",
+                "other"
+            ],
+            "incomeRanges": [
+                "below_50000",
+                "50000_100000",
+                "100000_200000"
+            ],
+            "caste": [
+                "SC",
+                "ST",
+                "OBC",
+                "General"
+            ],
+            "landHolding": [
+                "landless",
+                "below_1acre",
+                "1_2acres",
+                "2_5acres"
+            ],
+            "notes": [
+                "Must be the woman head of family on Public Distribution System (PDS) family card.",
+                "Annual family income must be under ₹2.5 lakh."
+            ]
+        },
+        "benefits": [
+            {
+                "title": "Monthly Cash Transfer",
+                "amount": "₹1,000 per month",
+                "description": "Direct Benefit Transfer to the bank account."
+            }
+        ],
+        "applicationProcess": [
+            {
+                "title": "Check Eligibility via Ration Card",
+                "description": "Ensure your name is registered as household head in ration card."
+            },
+            {
+                "title": "Apply at special camps",
+                "description": "Submit application form at designated Fair Price Shop (FPS) localized camps."
+            }
+        ],
+        "documents": [
+            "Ration Card",
+            "Aadhaar Card",
+            "Bank Passbook Linked with Aadhaar",
+            "Electricity Bill"
+        ],
+        "applicationUrl": "https://kmut.tn.gov.in/",
+        "helplineNumber": "1100",
+        "state": "Tamil Nadu",
+        "isActive": true,
+        "tags": [
+            "tamil nadu",
+            "women",
+            "dbt",
+            "income support"
+        ],
+        "lastUpdated": "2026-04-28",
+        "sourceUrl": "https://kmut.tn.gov.in/"
+    },
+    {
+        "id": "AP-AMMA-VODI-001",
+        "name": "Jagananna Amma Vodi",
+        "ministry": "Department of School Education, Andhra Pradesh",
+        "category": "education",
+        "subCategory": "Financial support for mothers",
+        "description": "Financial assistance to mothers for sending their children to schools and junior colleges in AP.",
+        "descriptionDetailed": "Amma Vodi provides ₹15,000 annually to eligible mothers or recognized guardians from BPL families for sending their children to recognized schools or junior colleges (Class 1 to 12).",
+        "eligibility": {
+            "age": {
+                "min": 21
+            },
+            "states": [
+                "Andhra Pradesh"
+            ],
+            "gender": "female",
+            "occupations": [
+                "farmer",
+                "agricultural_labourer",
+                "artisan",
+                "construction_worker",
+                "domestic_worker",
+                "small_business",
+                "unemployed",
+                "other"
+            ],
+            "incomeRanges": [
+                "below_50000",
+                "50000_100000"
+            ],
+            "caste": [
+                "SC",
+                "ST",
+                "OBC",
+                "General"
+            ],
+            "landHolding": [
+                "landless",
+                "below_1acre",
+                "1_2acres"
+            ],
+            "notes": [
+                "Must possess a White Ration Card (BPL).",
+                "Child must maintain 75% attendance in school/college."
+            ]
+        },
+        "benefits": [
+            {
+                "title": "Annual Support for Education",
+                "amount": "₹15,000 per annum",
+                "description": "Funds direct to mother’s unencumbered bank account."
+            }
+        ],
+        "applicationProcess": [
+            {
+                "title": "School Enrollment",
+                "description": "Ensure child is enrolled in a recognized institution."
+            },
+            {
+                "title": "Verification by Village Secretariat",
+                "description": "Details verified through Village/Ward volunteers and Headmasters."
+            }
+        ],
+        "documents": [
+            "Aadhaar Card of Mother",
+            "White Ration Card",
+            "School ID details of child",
+            "Bank details linked to Aadhaar"
+        ],
+        "applicationUrl": "https://jaganannaammavodi.ap.gov.in/",
+        "helplineNumber": "1902",
+        "state": "Andhra Pradesh",
+        "isActive": true,
+        "tags": [
+            "andhra pradesh",
+            "education",
+            "women",
+            "students",
+            "children"
+        ],
+        "lastUpdated": "2026-04-28",
+        "sourceUrl": "https://jaganannaammavodi.ap.gov.in/"
+    },
+    {
+        "id": "TS-RYTHU-BANDHU-001",
+        "name": "Rythu Bandhu",
+        "ministry": "Agriculture Department, Telangana",
+        "category": "agriculture",
+        "subCategory": "Farmer Investment Support",
+        "description": "Financial assistance to farmers for two crops a year to meet investment needs.",
+        "descriptionDetailed": "As an Agriculture Investment Support Scheme, Rythu Bandhu is implemented to relieve farmers of debt burden and assist them in procuring seeds, fertilizers, pesticides, and field prep.",
+        "eligibility": {
+            "age": {
+                "min": 18
+            },
+            "states": [
+                "Telangana"
+            ],
+            "gender": "any",
+            "occupations": [
+                "farmer"
+            ],
+            "incomeRanges": [
+                "below_50000",
+                "50000_100000",
+                "100000_200000",
+                "more_than_200000"
+            ],
+            "caste": [
+                "SC",
+                "ST",
+                "OBC",
+                "General"
+            ],
+            "landHolding": [
+                "below_1acre",
+                "1_2acres",
+                "2_5acres",
+                "more_than_5acres"
+            ],
+            "notes": [
+                "Must own agricultural land (Pattadar).",
+                "Tenant farmers are currently excluded."
+            ]
+        },
+        "benefits": [
+            {
+                "title": "Investment Support",
+                "amount": "₹5,000 per acre per season",
+                "description": "Total ₹10,000 per acre given yearly for Kharif and Rabi seasons."
+            }
+        ],
+        "applicationProcess": [
+            {
+                "title": "Pattadar Passbook Update",
+                "description": "Ensure land records are verified on the Dharani portal."
+            },
+            {
+                "title": "Agricultural Extension Officer",
+                "description": "Submit bank details to local AEO for inclusion in DBT list."
+            }
+        ],
+        "documents": [
+            "Pattadar Passbook / Title Deed",
+            "Aadhaar Card",
+            "Bank Account Details"
+        ],
+        "applicationUrl": "http://rythubandhu.telangana.gov.in/",
+        "helplineNumber": "1800-425-364",
+        "state": "Telangana",
+        "isActive": true,
+        "tags": [
+            "telangana",
+            "agriculture",
+            "farmers",
+            "investment"
+        ],
+        "lastUpdated": "2026-04-28",
+        "sourceUrl": "http://rythubandhu.telangana.gov.in/"
+    },
+    {
+        "id": "KL-LIFE-MISSION-001",
+        "name": "LIFE Mission Kerala",
+        "ministry": "Local Self Government Department, Kerala",
+        "category": "housing",
+        "subCategory": "Housing for all",
+        "description": "Provides comprehensive housing for all landless and homeless residents in Kerala.",
+        "descriptionDetailed": "Livelihood Inclusion and Financial Empowerment (LIFE) is a comprehensive housing scheme ensuring safe housing for the homeless along with provisions for livelihoods, primary health care, and skill development.",
+        "eligibility": {
+            "age": {
+                "min": 18
+            },
+            "states": [
+                "Kerala"
+            ],
+            "gender": "any",
+            "occupations": [
+                "agricultural_labourer",
+                "artisan",
+                "construction_worker",
+                "domestic_worker",
+                "unemployed",
+                "other"
+            ],
+            "incomeRanges": [
+                "below_50000",
+                "50000_100000"
+            ],
+            "caste": [
+                "SC",
+                "ST",
+                "OBC",
+                "General"
+            ],
+            "landHolding": [
+                "landless",
+                "below_1acre"
+            ],
+            "notes": [
+                "Priority for destitute, widows, differently-abled, and terminally ill.",
+                "Must not possess a habitable house anywhere in the state."
+            ]
+        },
+        "benefits": [
+            {
+                "title": "Housing Grant",
+                "amount": "₹4 Lakhs for individual house",
+                "description": "Provided in phases linked to construction progress."
+            },
+            {
+                "title": "Housing complex allocation",
+                "description": "Flats allocated to beneficiaries completely landless and homeless."
+            }
+        ],
+        "applicationProcess": [
+            {
+                "title": "Gram Sabha Selection",
+                "description": "Beneficiary list is drawn up strictly based on criteria and approved by local Gram Sabha."
+            },
+            {
+                "title": "Submit through LSGD",
+                "description": "Register applications during the periodic LIFE mission surveys."
+            }
+        ],
+        "documents": [
+            "Ration Card (BPL/Priority)",
+            "Aadhaar Card",
+            "Income Certificate",
+            "Caste Certificate (if applicable)"
+        ],
+        "applicationUrl": "https://lifemission.kerala.gov.in/",
+        "helplineNumber": "0471-2335524",
+        "state": "Kerala",
+        "isActive": true,
+        "tags": [
+            "kerala",
+            "housing",
+            "infrastructure",
+            "poor"
+        ],
+        "lastUpdated": "2026-04-28",
+        "sourceUrl": "https://lifemission.kerala.gov.in/"
+    },
+    {
+        "id": "MH-LADKI-BAHIN-001",
+        "name": "Mukhyamantri Majhi Ladki Bahin Yojana",
+        "ministry": "Government of Maharashtra",
+        "category": "women",
+        "subCategory": "Financial Empowerment",
+        "description": "Monthly financial assistance for women in Maharashtra to boost economic independence and health.",
+        "descriptionDetailed": "The grand scheme in Maharashtra provides ₹1,500 every month to women aged strictly between 21 to 65 to promote self-reliance, better health, and financial independence for women of economically weaker backgrounds.",
+        "eligibility": {
+            "age": {
+                "min": 21,
+                "max": 65
+            },
+            "states": [
+                "Maharashtra"
+            ],
+            "gender": "female",
+            "occupations": [
+                "farmer",
+                "agricultural_labourer",
+                "artisan",
+                "domestic_worker",
+                "unemployed",
+                "other"
+            ],
+            "incomeRanges": [
+                "below_50000",
+                "50000_100000",
+                "100000_200000"
+            ],
+            "caste": [
+                "SC",
+                "ST",
+                "OBC",
+                "General"
+            ],
+            "landHolding": [
+                "landless",
+                "below_1acre",
+                "1_2acres",
+                "2_5acres"
+            ],
+            "notes": [
+                "Family income must be below ₹2.5 Lakh per year.",
+                "Widows and destitute women are prioritized."
+            ]
+        },
+        "benefits": [
+            {
+                "title": "Direct Cash Assistance",
+                "amount": "₹1,500 per month",
+                "description": "Directly transferred to Aadhaar-linked bank accounts."
+            }
+        ],
+        "applicationProcess": [
+            {
+                "title": "Nari Shakti Doot App / Portal",
+                "description": "Apply online using the official mobile application or portal."
+            },
+            {
+                "title": "Anganwadi/Asha worker assistance",
+                "description": "Local centers facilitate offline applications."
+            }
+        ],
+        "documents": [
+            "Aadhaar Card",
+            "Domicile Certificate or 15 year residence proof",
+            "Income Certificate/Yellow or Orange Ration Card",
+            "Bank Passbook"
+        ],
+        "applicationUrl": "https://ladkibahin.maharashtra.gov.in",
+        "helplineNumber": "181",
+        "state": "Maharashtra",
+        "isActive": true,
+        "tags": [
+            "maharashtra",
+            "women",
+            "dbt",
+            "empowerment"
+        ],
+        "lastUpdated": "2026-04-28",
+        "sourceUrl": "https://maharashtra.gov.in"
+    },
+    {
+        "id": "UP-KANYA-SUMANGALA-001",
+        "name": "Mukhyamantri Kanya Sumangala Yojana",
+        "ministry": "Department of Women and Child Development, Uttar Pradesh",
+        "category": "education",
+        "subCategory": "Girl Child Education & Health",
+        "description": "Conditional cash transfer strategy to ensure the health and education of the girl child in UP.",
+        "descriptionDetailed": "This initiative attempts to eliminate female feticide, promote education among girls and provide financial assistance of Rs. 15,000 for the girl child at 6 different stages of development including birth, vaccination, and school admissions.",
+        "eligibility": {
+            "age": {
+                "max": 18
+            },
+            "states": [
+                "Uttar Pradesh"
+            ],
+            "gender": "female",
+            "occupations": [
+                "farmer",
+                "agricultural_labourer",
+                "artisan",
+                "domestic_worker",
+                "small_business",
+                "unemployed",
+                "other"
+            ],
+            "incomeRanges": [
+                "below_50000",
+                "50000_100000",
+                "100000_200000"
+            ],
+            "caste": [
+                "SC",
+                "ST",
+                "OBC",
+                "General"
+            ],
+            "landHolding": [
+                "landless",
+                "below_1acre",
+                "1_2acres",
+                "2_5acres",
+                "more_than_5acres"
+            ],
+            "notes": [
+                "Family annual income limit is ₹3 Lakh.",
+                "Maximum 2 daughters from a family can avail the benefits."
+            ]
+        },
+        "benefits": [
+            {
+                "title": "Multi-stage Cash Transfer",
+                "amount": "Total up to ₹15,000",
+                "description": "Rs. 2,000 at birth, Rs. 1,000 at full immunization, Rs. 2,000 at Grade 1 admission, Rs. 2000 at Grade 6, Rs. 3,000 at Grade 9, Rs. 5,000 at Graduation/diploma."
+            }
+        ],
+        "applicationProcess": [
+            {
+                "title": "Portal Registration",
+                "description": "Register on the Kanya Sumangala Yojana online portal."
+            },
+            {
+                "title": "Document Verification",
+                "description": "Respective stage documents (birth cert, school admission proof) uploaded online."
+            }
+        ],
+        "documents": [
+            "Birth Certificate",
+            "Vaccination Card",
+            "School Admission Proof",
+            "Aadhaar Card",
+            "Income Certificate",
+            "Bank Details"
+        ],
+        "applicationUrl": "https://mksy.up.gov.in/",
+        "helplineNumber": "1800-8899-419",
+        "state": "Uttar Pradesh",
+        "isActive": true,
+        "tags": [
+            "uttar pradesh",
+            "women",
+            "children",
+            "education",
+            "health"
+        ],
+        "lastUpdated": "2026-04-28",
+        "sourceUrl": "https://mksy.up.gov.in/"
+    },
+    {
+        "id": "TN-CMCHIS-001",
+        "name": "Chief Minister's Comprehensive Health Insurance Scheme (CMCHIS)",
+        "ministry": "Department of Health and Family Welfare, Tamil Nadu",
+        "category": "health",
+        "subCategory": "Medical Insurance",
+        "description": "Provides cashless hospitalization coverage up to ₹5 Lakh per family per year.",
+        "descriptionDetailed": "CMCHIS provides quality health care to eligible persons through empanelled Government and Private hospitals and reduces the financial hardship of enrolled families.",
+        "eligibility": {
+            "age": {
+                "min": 0
+            },
+            "states": [
+                "Tamil Nadu"
+            ],
+            "gender": "any",
+            "occupations": [
+                "farmer",
+                "agricultural_labourer",
+                "artisan",
+                "construction_worker",
+                "domestic_worker",
+                "small_business",
+                "unemployed",
+                "other"
+            ],
+            "incomeRanges": [
+                "below_50000",
+                "50000_100000",
+                "100000_200000"
+            ],
+            "caste": [
+                "SC",
+                "ST",
+                "OBC",
+                "General"
+            ],
+            "landHolding": [
+                "landless",
+                "below_1acre",
+                "1_2acres",
+                "2_5acres",
+                "more_than_5acres"
+            ],
+            "notes": [
+                "Family annual income should be less than ₹1,20,000."
+            ]
+        },
+        "benefits": [
+            {
+                "title": "Health Insurance Coverage",
+                "amount": "Up to ₹5 Lakh per annum",
+                "description": "Cashless hospitalization for approved medical and surgical procedures."
+            }
+        ],
+        "applicationProcess": [
+            {
+                "title": "Enrollment at Collectorate",
+                "description": "Enroll via VAO / Kiosk at the District Collectorate with Income Certificate."
+            }
+        ],
+        "documents": [
+            "Income Certificate",
+            "Ration Card",
+            "Aadhaar Card"
+        ],
+        "applicationUrl": "https://www.cmchistn.com/",
+        "helplineNumber": "104",
+        "state": "Tamil Nadu",
+        "isActive": true,
+        "tags": [
+            "tamil nadu",
+            "health",
+            "insurance",
+            "medical"
+        ],
+        "lastUpdated": "2026-04-28",
+        "sourceUrl": "https://www.cmchistn.com/"
+    },
+    {
+        "id": "AP-YSR-ASARA-001",
+        "name": "YSR Asara",
+        "ministry": "Department of Rural Development, Andhra Pradesh",
+        "category": "women",
+        "subCategory": "SHG Financial Empowerment",
+        "description": "Reimbursement of outstanding bank loans for women Self Help Groups (SHGs).",
+        "descriptionDetailed": "To empower women and elevate them from poverty by reimbursing the outstanding bank loans of SHG women as on cut-off date, directly into their bank accounts in installments.",
+        "eligibility": {
+            "age": {
+                "min": 18
+            },
+            "states": [
+                "Andhra Pradesh"
+            ],
+            "gender": "female",
+            "occupations": [
+                "farmer",
+                "agricultural_labourer",
+                "artisan",
+                "domestic_worker",
+                "small_business",
+                "unemployed",
+                "other"
+            ],
+            "incomeRanges": [
+                "below_50000",
+                "50000_100000",
+                "100000_200000"
+            ],
+            "caste": [
+                "SC",
+                "ST",
+                "OBC",
+                "General"
+            ],
+            "landHolding": [
+                "landless",
+                "below_1acre",
+                "1_2acres"
+            ],
+            "notes": [
+                "Must be a member of a registered Self Help Group (SHG) in AP."
+            ]
+        },
+        "benefits": [
+            {
+                "title": "Loan Reimbursement",
+                "amount": "Variable (Total outstanding loan amount)",
+                "description": "Reimbursement is credited directly to SHG bank accounts."
+            }
+        ],
+        "applicationProcess": [
+            {
+                "title": "SHG Data Verification",
+                "description": "Data of SHGs is verified by SERP and MEPMA."
+            },
+            {
+                "title": "Approval by Village Secretariat",
+                "description": "Verified lists are displayed at Village/Ward Secretariats."
+            }
+        ],
+        "documents": [
+            "Aadhaar Card",
+            "SHG Loan Account Details",
+            "Bank Passbook"
+        ],
+        "applicationUrl": "https://navasakam.ap.gov.in/",
+        "helplineNumber": "1902",
+        "state": "Andhra Pradesh",
+        "isActive": true,
+        "tags": [
+            "andhra pradesh",
+            "women",
+            "shg",
+            "loan",
+            "empowerment"
+        ],
+        "lastUpdated": "2026-04-28",
+        "sourceUrl": "https://navasakam.ap.gov.in/"
+    },
+    {
+        "id": "TS-DALIT-BANDHU-001",
+        "name": "Telangana Dalit Bandhu",
+        "ministry": "SC Development Department, Telangana",
+        "category": "business",
+        "subCategory": "Entrepreneurship & Grant",
+        "description": "One-time capital grant of ₹10 lakhs per SC family to set up a business.",
+        "descriptionDetailed": "Aimed at the economic empowerment of Scheduled Caste families by providing them a direct grant of ₹10 lakhs to establish any viable income-generating enterprise.",
+        "eligibility": {
+            "age": {
+                "min": 18
+            },
+            "states": [
+                "Telangana"
+            ],
+            "gender": "any",
+            "occupations": [
+                "agricultural_labourer",
+                "artisan",
+                "construction_worker",
+                "small_business",
+                "unemployed",
+                "other"
+            ],
+            "incomeRanges": [
+                "below_50000",
+                "50000_100000",
+                "100000_200000",
+                "more_than_200000"
+            ],
+            "caste": [
+                "SC"
+            ],
+            "landHolding": [
+                "landless",
+                "below_1acre",
+                "1_2acres",
+                "2_5acres",
+                "more_than_5acres"
+            ],
+            "notes": [
+                "Applicable exclusively to Scheduled Caste (SC) households in Telangana."
+            ]
+        },
+        "benefits": [
+            {
+                "title": "Direct Capital Grant",
+                "amount": "₹10,000,000 (10 Lakhs)",
+                "description": "Provided directly to the beneficiary's bank account for business establishment."
+            }
+        ],
+        "applicationProcess": [
+            {
+                "title": "Registration via Collectorate",
+                "description": "Submission of application at District Collectorate or online portal."
+            },
+            {
+                "title": "Business Plan Selection",
+                "description": "Beneficiary selects a unit/business plan and gets it approved."
+            }
+        ],
+        "documents": [
+            "Aadhaar Card",
+            "Caste Certificate (SC)",
+            "Bank Details",
+            "Project/Business Proposal"
+        ],
+        "applicationUrl": "https://telangana.gov.in/",
+        "helplineNumber": "1800-425-6666",
+        "state": "Telangana",
+        "isActive": true,
+        "tags": [
+            "telangana",
+            "sc",
+            "entrepreneurship",
+            "business",
+            "grant"
+        ],
+        "lastUpdated": "2026-04-28",
+        "sourceUrl": "https://telangana.gov.in/"
+    },
+    {
+        "id": "KL-CMEDP-001",
+        "name": "Chief Minister's Entrepreneurship Development Programme (CMEDP)",
+        "ministry": "Kerala Financial Corporation (KFC)",
+        "category": "business",
+        "subCategory": "Startup & MSME Support",
+        "description": "Provides financial assistance with interest subvention to promote startups in Kerala.",
+        "descriptionDetailed": "CMEDP aims to identify and train youth in Kerala to become entrepreneurs. It provides highly subsidized loans for setting up micro, small, and medium enterprises.",
+        "eligibility": {
+            "age": {
+                "min": 18,
+                "max": 50
+            },
+            "states": [
+                "Kerala"
+            ],
+            "gender": "any",
+            "occupations": [
+                "small_business",
+                "unemployed",
+                "artisan",
+                "farmer",
+                "other"
+            ],
+            "incomeRanges": [
+                "below_50000",
+                "50000_100000",
+                "100000_200000",
+                "more_than_200000"
+            ],
+            "caste": [
+                "SC",
+                "ST",
+                "OBC",
+                "General"
+            ],
+            "landHolding": [
+                "landless",
+                "below_1acre",
+                "1_2acres",
+                "2_5acres",
+                "more_than_5acres"
+            ],
+            "notes": [
+                "Applicant must have a viable project proposal.",
+                "Upper age limit relaxed for specific categories like SC/ST and Women."
+            ]
+        },
+        "benefits": [
+            {
+                "title": "Subsidized Loan",
+                "amount": "Up to ₹50 Lakhs",
+                "description": "Loans provided at highly subsidized effective interest rates."
+            }
+        ],
+        "applicationProcess": [
+            {
+                "title": "Project Submission",
+                "description": "Submit Business Plan online through Kerala Financial Corporation (KFC)."
+            },
+            {
+                "title": "Screening & Training",
+                "description": "Candidates undergo interview/screening followed by mandatory entrepreneurship training."
+            }
+        ],
+        "documents": [
+            "Detailed Project Report (DPR)",
+            "Aadhaar Card",
+            "Educational Certificates"
+        ],
+        "applicationUrl": "https://kfc.org/cmedp",
+        "helplineNumber": "0471-2311245",
+        "state": "Kerala",
+        "isActive": true,
+        "tags": [
+            "kerala",
+            "business",
+            "startup",
+            "msme",
+            "loans"
+        ],
+        "lastUpdated": "2026-04-28",
+        "sourceUrl": "https://kfc.org"
+    },
+    {
+        "id": "KA-GANGA-KALYANA-001",
+        "name": "Karnataka Ganga Kalyana Scheme",
+        "ministry": "Minorities / SC/ST Development Corporations",
+        "category": "agriculture",
+        "subCategory": "Irrigation Support",
+        "description": "Provides free irrigation facilities to farmers from minority, SC/ST, and OBC communities by drilling borewells.",
+        "descriptionDetailed": "Ganga Kalyana scheme provides financial assistance towards the drilling of bore wells, installation of pump sets, and electrification for dry land held by marginal farmers.",
+        "eligibility": {
+            "age": {
+                "min": 18
+            },
+            "states": [
+                "Karnataka"
+            ],
+            "gender": "any",
+            "occupations": [
+                "farmer",
+                "agricultural_labourer"
+            ],
+            "incomeRanges": [
+                "below_50000",
+                "50000_100000"
+            ],
+            "caste": [
+                "SC",
+                "ST",
+                "OBC"
+            ],
+            "landHolding": [
+                "1_2acres",
+                "2_5acres"
+            ],
+            "notes": [
+                "Must own dry land (minimum 2 to 5 acres).",
+                "Exclusively for marginal farmers from SC/ST/OBC/Minority groups."
+            ]
+        },
+        "benefits": [
+            {
+                "title": "Free Borewell & Pump Set",
+                "amount": "Approx ₹1.5L to ₹3L grant",
+                "description": "Complete cost coverage for drilling, pump set supply, and energization."
+            }
+        ],
+        "applicationProcess": [
+            {
+                "title": "Online Application",
+                "description": "Apply through Seva Sindhu or respective Development Corporation portals."
+            },
+            {
+                "title": "Groundwater Survey",
+                "description": "Geologist report and feasibility check before drilling."
+            }
+        ],
+        "documents": [
+            "Pahani / RTC (Record of Rights)",
+            "Caste Certificate",
+            "Small/Marginal Farmer Certificate"
+        ],
+        "applicationUrl": "https://kmdc.karnataka.gov.in/",
+        "helplineNumber": "080-22864720",
+        "state": "Karnataka",
+        "isActive": true,
+        "tags": [
+            "karnataka",
+            "agriculture",
+            "irrigation",
+            "sc",
+            "st",
+            "obc"
+        ],
+        "lastUpdated": "2026-04-28",
+        "sourceUrl": "https://kmdc.karnataka.gov.in/"
     }
 ]
