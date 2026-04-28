@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowRight, Bot, CheckCircle2, FileSearch, Languages, ShieldCheck, Sparkles } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
+import { getAllSchemes } from "@/lib/schemes";
 
 const categories = [
   { label: "Agriculture", count: "4+", color: "from-emerald-500 to-emerald-600", shadow: "shadow-emerald-500/20" },
@@ -19,7 +20,7 @@ const steps = [
 
 export default function HomePage() {
   const { t } = useTranslation();
-  const schemeCount = 37;
+  const schemeCount = getAllSchemes().length;
 
   return (
     <div className="relative min-h-screen overflow-hidden transition-colors">
