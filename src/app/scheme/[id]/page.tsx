@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import { getAllSchemes, getCategoryAccent, getSchemeById } from "@/lib/schemes";
 import { SchemeReadiness } from "@/components/results/SchemeReadiness";
+import { PacketGeneratorButton } from "@/components/scheme/PacketGeneratorButton";
 
 export function generateStaticParams() {
   return getAllSchemes().map((scheme) => ({ id: scheme.id }));
@@ -33,6 +34,7 @@ export default async function SchemeDetailPage({ params }: { params: Promise<{ i
             <p className="mt-3 max-w-3xl leading-7 text-slate-600 dark:text-slate-400">{scheme.descriptionDetailed}</p>
           </div>
           <div className="flex gap-2">
+            <PacketGeneratorButton scheme={scheme} />
             <Button asChild variant="secondary">
               <Link href={`/chat?schemeId=${scheme.id}`}>
                 <Bot className="h-4 w-4" />
