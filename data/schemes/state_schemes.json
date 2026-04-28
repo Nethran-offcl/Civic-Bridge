@@ -345,7 +345,8 @@
                 "domestic_worker",
                 "small_business",
                 "unemployed",
-                "other"
+                "other",
+                "student"
             ],
             "incomeRanges": [
                 "below_50000",
@@ -450,6 +451,8 @@
             "Fee Receipt",
             "Mark sheet"
         ],
+        "applicationUrl": "https://ssp.postmatric.karnataka.gov.in/",
+        "sourceUrl": "https://ssp.postmatric.karnataka.gov.in/",
         "isActive": true,
         "tags": [
             "farmer",
@@ -504,6 +507,8 @@
             "Aadhaar",
             "Degree/Diploma Certificate"
         ],
+        "applicationUrl": "https://sevasindhugs.karnataka.gov.in/",
+        "sourceUrl": "https://sevasindhugs.karnataka.gov.in/",
         "isActive": true,
         "tags": [
             "youth",
@@ -620,7 +625,9 @@
                 "domestic_worker",
                 "small_business",
                 "unemployed",
-                "other"
+                "other",
+                "student",
+                "fisherman"
             ],
             "incomeRanges": [
                 "below_50000",

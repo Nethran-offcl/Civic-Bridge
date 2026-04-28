@@ -95,7 +95,8 @@
                                                 "construction_worker",
                                                 "domestic_worker",
                                                 "unemployed",
-                                                "other"
+                                                "other",
+                                                "fisherman"
                                             ],
                             "incomeRanges":  [
                                                  "below_50000",
@@ -176,7 +177,8 @@
                                                 "artisan",
                                                 "fisherman",
                                                 "small_business",
-                                                "other"
+                                                "other",
+                                                "student"
                                             ],
                             "incomeRanges":  [
                                                  "below_50000",
@@ -911,7 +913,8 @@
                                                 "student",
                                                 "unemployed",
                                                 "agricultural_labourer",
-                                                "other"
+                                                "other",
+                                                "fisherman"
                                             ],
                             "incomeRanges":  [
                                                  "below_50000",
@@ -1262,6 +1265,7 @@
                           "Bank Account Details",
                           "Mobile Number"
                       ],
+        "applicationUrl":  "https://pmvishwakarma.gov.in/",
         "isActive":  true,
         "tags":  [
                      "artisan",
@@ -1317,6 +1321,7 @@
                           "Aadhaar Card",
                           "IFSC and Bank Account Details"
                       ],
+        "applicationUrl":  "https://maandhan.in/",
         "isActive":  true,
         "tags":  [
                      "pension",
@@ -1374,6 +1379,7 @@
                           "Land documents",
                           "Passport photo"
                       ],
+        "applicationUrl":  "https://www.fasalrin.gov.in/",
         "isActive":  true,
         "tags":  [
                      "credit",
@@ -1424,6 +1430,7 @@
                           "Business Plan",
                           "Address proof"
                       ],
+        "applicationUrl":  "https://www.standupmitra.in/",
         "isActive":  true,
         "tags":  [
                      "women",
@@ -1433,5 +1440,292 @@
                      "startup"
                  ],
         "lastUpdated":  "2024-03-01T00:00:00Z"
+    },
+    {
+        "id":  "central_pmegp",
+        "name":  "Prime Minister Employment Generation Programme (PMEGP)",
+        "ministry":  "Ministry of Micro, Small and Medium Enterprises",
+        "category":  "startup",
+        "subCategory":  "Self-employment and micro-enterprise support",
+        "description":  "Credit-linked subsidy support for new micro-enterprises in rural and urban areas.",
+        "descriptionDetailed":  "PMEGP supports new self-employment ventures and micro-enterprises through bank-linked loans with margin money subsidy. It is intended to help traditional artisans, aspiring entrepreneurs, and unemployed youth start non-farm businesses.",
+        "eligibility":  {
+                            "age":  {
+                                        "min":  18
+                                    },
+                            "states":  [
+                                           "all"
+                                       ],
+                            "occupations":  [
+                                                "artisan",
+                                                "small_business",
+                                                "unemployed",
+                                                "other"
+                                            ],
+                            "notes":  [
+                                          "Applicant must be setting up a new micro-enterprise project.",
+                                          "Manufacturing and service projects above certain cost thresholds may require at least Class 8 education.",
+                                          "Existing units that already received similar government subsidy are not eligible."
+                                      ]
+                        },
+        "benefits":  [
+                         {
+                             "title":  "Margin money subsidy",
+                             "amount":  "Varies by category and area",
+                             "description":  "Government subsidy is routed through banks to support eligible new micro-enterprises."
+                         },
+                         {
+                             "title":  "Project support",
+                             "amount":  "Up to Rs. 50 lakh manufacturing / Rs. 20 lakh service",
+                             "description":  "Eligible project ceilings depend on the sector and current scheme guidelines."
+                         }
+                     ],
+        "applicationProcess":  [
+                                   {
+                                       "title":  "Prepare business idea",
+                                       "description":  "Choose a new non-farm project and keep basic project details ready."
+                                   },
+                                   {
+                                       "title":  "Apply on PMEGP portal",
+                                       "description":  "Submit the online PMEGP application and select the implementing agency or bank path."
+                                   },
+                                   {
+                                       "title":  "Complete bank and training steps",
+                                       "description":  "Respond to scrutiny, interview, EDP training, and bank processing if shortlisted."
+                                   }
+                               ],
+        "documents":  [
+                          "Identity proof",
+                          "Address proof",
+                          "Educational certificate if applicable",
+                          "Project report",
+                          "Bank details"
+                      ],
+        "applicationUrl":  "https://www.kviconline.gov.in/pmegp/pmegpweb/",
+        "helplineNumber":  "Contact KVIC / DIC / nodal bank branch",
+        "isActive":  true,
+        "tags":  [
+                     "entrepreneurship",
+                     "micro enterprise",
+                     "loan",
+                     "subsidy",
+                     "self-employment"
+                 ],
+        "lastUpdated":  "2026-04-28",
+        "sourceUrl":  "https://msme.gov.in/node/1763"
+    },
+    {
+        "id":  "central_apprenticeship_portal",
+        "name":  "Apprenticeship Training Portal",
+        "ministry":  "Ministry of Education",
+        "category":  "skill",
+        "subCategory":  "Apprenticeship and on-the-job training",
+        "description":  "National apprenticeship portal for industry-linked training opportunities.",
+        "descriptionDetailed":  "The Apprenticeship Training Portal connects learners and job-seekers with apprenticeship opportunities that combine basic training with on-the-job practical learning in establishments across India.",
+        "eligibility":  {
+                            "age":  {
+                                        "min":  14
+                                    },
+                            "states":  [
+                                           "all"
+                                       ],
+                            "occupations":  [
+                                                "student",
+                                                "unemployed"
+                                            ],
+                            "notes":  [
+                                          "Eligibility varies by apprenticeship type, trade, and employer requirements.",
+                                          "Applicants typically need relevant education or training background for the chosen opportunity."
+                                      ]
+                        },
+        "benefits":  [
+                         {
+                             "title":  "Hands-on training",
+                             "description":  "Candidates receive practical workplace learning through apprenticeship contracts."
+                         },
+                         {
+                             "title":  "Stipend support",
+                             "amount":  "Varies by opportunity",
+                             "description":  "Many apprenticeship opportunities provide a stipend during training."
+                         }
+                     ],
+        "applicationProcess":  [
+                                   {
+                                       "title":  "Create candidate profile",
+                                       "description":  "Register on the national apprenticeship portal with education and contact details."
+                                   },
+                                   {
+                                       "title":  "Browse openings",
+                                       "description":  "Search for apprenticeship opportunities by location, trade, or employer."
+                                   },
+                                   {
+                                       "title":  "Apply and track",
+                                       "description":  "Apply online and monitor updates from the employer or training establishment."
+                                   }
+                               ],
+        "documents":  [
+                          "Identity proof",
+                          "Educational certificates",
+                          "Bank details if required",
+                          "Passport photo"
+                      ],
+        "applicationUrl":  "https://www.apprenticeshipindia.gov.in/",
+        "helplineNumber":  "Refer portal helpdesk",
+        "isActive":  true,
+        "tags":  [
+                     "apprenticeship",
+                     "training",
+                     "student",
+                     "jobs",
+                     "skill"
+                 ],
+        "lastUpdated":  "2026-04-28",
+        "sourceUrl":  "https://www.india.gov.in/category/education-learning/subcategory/higher-education/details/apprenticeship-training-portal"
+    },
+    {
+        "id":  "central_pmmsy",
+        "name":  "Pradhan Mantri Matsya Sampada Yojana (PMMSY)",
+        "ministry":  "Department of Fisheries",
+        "category":  "agriculture",
+        "subCategory":  "Fisheries development and infrastructure",
+        "description":  "Support for fisheries development, aquaculture, value chain, and fishers' welfare activities.",
+        "descriptionDetailed":  "PMMSY is a national fisheries development scheme that supports infrastructure, production, productivity, post-harvest management, and welfare-oriented interventions across the fisheries value chain.",
+        "eligibility":  {
+                            "age":  {
+                                        "min":  18
+                                    },
+                            "states":  [
+                                           "all"
+                                       ],
+                            "occupations":  [
+                                                "fisherman",
+                                                "small_business",
+                                                "other"
+                                            ],
+                            "notes":  [
+                                          "Eligible activities and subsidy patterns vary by component, state implementation, and beneficiary category.",
+                                          "Beneficiary selection and project sanction often happen through the concerned State or Union Territory fisheries department."
+                                      ]
+                        },
+        "benefits":  [
+                         {
+                             "title":  "Project assistance",
+                             "amount":  "Varies by approved activity",
+                             "description":  "Financial support is available for eligible fisheries and aquaculture activities under scheme guidelines."
+                         },
+                         {
+                             "title":  "Infrastructure and value chain support",
+                             "description":  "The scheme supports assets such as ponds, hatcheries, cold chain, transport, marketing, and related fisheries infrastructure."
+                         }
+                     ],
+        "applicationProcess":  [
+                                   {
+                                       "title":  "Identify eligible activity",
+                                       "description":  "Check the fisheries activity or project component relevant to your work."
+                                   },
+                                   {
+                                       "title":  "Apply through fisheries channel",
+                                       "description":  "Use the PMMSY portal or contact the State fisheries department for the active beneficiary workflow."
+                                   },
+                                   {
+                                       "title":  "Submit project details",
+                                       "description":  "Provide quotations, land or water-body details, category proofs, and bank information where required."
+                                   }
+                               ],
+        "documents":  [
+                          "Identity proof",
+                          "Bank details",
+                          "Project proposal or quotations",
+                          "Relevant fisheries license or local approval if applicable"
+                      ],
+        "applicationUrl":  "https://pmmsy.dof.gov.in/",
+        "helplineNumber":  "Contact concerned State fisheries department",
+        "isActive":  true,
+        "tags":  [
+                     "fisheries",
+                     "aquaculture",
+                     "infrastructure",
+                     "fish farmers",
+                     "welfare"
+                 ],
+        "lastUpdated":  "2026-04-28",
+        "sourceUrl":  "https://www.india.gov.in/category/agriculture-rural-environment/subcategory/animal-husbandry-fisheries/details/pradhan-mantri-matsya-sampada-yojana"
+    },
+    {
+        "id":  "central_csss_college_students",
+        "name":  "Central Sector Scheme of Scholarship for College and University Students",
+        "ministry":  "Ministry of Education",
+        "category":  "education",
+        "subCategory":  "Higher education scholarship",
+        "description":  "Scholarship support for meritorious students from lower-income families pursuing higher studies.",
+        "descriptionDetailed":  "This central scholarship supports meritorious students from economically weaker families to continue regular college, university, and professional higher education courses.",
+        "eligibility":  {
+                            "age":  {
+                                        "min":  17,
+                                        "max":  25
+                                    },
+                            "states":  [
+                                           "all"
+                                       ],
+                            "occupations":  [
+                                                "student"
+                                            ],
+                            "incomeRanges":  [
+                                                 "below_50000",
+                                                 "50000_100000",
+                                                 "100000_200000",
+                                                 "200000_500000"
+                                             ],
+                            "notes":  [
+                                          "Applicant should be above the 80th percentile in Class 12 or equivalent examination in the relevant board stream.",
+                                          "Family income should be within the scheme ceiling in current guidelines.",
+                                          "Student should be pursuing a regular higher education course and should not be receiving another major scholarship for the same purpose."
+                                      ]
+                        },
+        "benefits":  [
+                         {
+                             "title":  "Graduation scholarship",
+                             "amount":  "Rs. 12,000/year",
+                             "description":  "Support for the first years of eligible college and university study as per current norms."
+                         },
+                         {
+                             "title":  "Postgraduate or advanced year support",
+                             "amount":  "Rs. 20,000/year",
+                             "description":  "Higher annual support applies for postgraduate study or specified advanced years under the scheme rules."
+                         }
+                     ],
+        "applicationProcess":  [
+                                   {
+                                       "title":  "Confirm board merit and income eligibility",
+                                       "description":  "Check percentile position, family income, and course eligibility before applying."
+                                   },
+                                   {
+                                       "title":  "Apply on NSP",
+                                       "description":  "Register and submit the scholarship application through the National Scholarship Portal."
+                                   },
+                                   {
+                                       "title":  "Track verification",
+                                       "description":  "Monitor institute, state, and central verification status on the portal."
+                                   }
+                               ],
+        "documents":  [
+                          "Class 12 mark sheet",
+                          "Income certificate or affidavit",
+                          "Admission proof",
+                          "Bank account details",
+                          "Identity proof"
+                      ],
+        "applicationUrl":  "https://scholarships.gov.in/",
+        "helplineNumber":  "0120-6619540",
+        "isActive":  true,
+        "tags":  [
+                     "scholarship",
+                     "college",
+                     "university",
+                     "student",
+                     "higher education"
+                 ],
+        "lastUpdated":  "2026-04-28",
+        "sourceUrl":  "https://www.education.gov.in/en/central-sector-scheme-scholarship-college-and-university-students"
     }
 ]
