@@ -1,9 +1,10 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { detectLanguage } from "@/lib/i18n";
 import { useProfileStore } from "@/store/profileStore";
 import type { ChatMessage } from "@/types/chat";
+import type { Scheme } from "@/types/scheme";
 
 function createMessage(role: ChatMessage["role"], content: string): ChatMessage {
   return {
@@ -14,14 +15,41 @@ function createMessage(role: ChatMessage["role"], content: string): ChatMessage 
   };
 }
 
-export function useChat(initialSchemeId?: string) {
+function createSchemeSummary(scheme: Scheme) {
+  const topBenefit = scheme.benefits[0];
+  const eligibilitySummary = scheme.eligibility.notes.slice(0, 3).join(" ");
+  const documentsSummary = scheme.documents.slice(0, 4).join(", ");
+
+  return [
+    `Here is a quick summary of ${scheme.name}.`,
+    scheme.descriptionDetailed,
+    topBenefit ? `Main benefit: ${topBenefit.amount ?? topBenefit.title} - ${topBenefit.description}` : "Main benefit details are listed in the scheme.",
+    eligibilitySummary ? `Eligibility notes: ${eligibilitySummary}` : "Eligibility notes are listed in the scheme.",
+    documentsSummary ? `Keep these documents ready: ${documentsSummary}.` : "Document requirements are listed in the scheme.",
+    scheme.applicationUrl ? `Official application portal: ${scheme.applicationUrl}` : "Official application portal is not listed.",
+    "Ask any follow-up questions about this scheme and I will stay focused on it."
+  ].join(" ");
+}
+
+function createInitialMessages(initialScheme?: Scheme) {
+  if (!initialScheme) {
+    return [createMessage("assistant", "Tell me which scheme you want to understand, or ask what you may be eligible for.")];
+  }
+
+  return [createMessage("assistant", createSchemeSummary(initialScheme))];
+}
+
+export function useChat(initialSchemeId?: string, initialScheme?: Scheme) {
   const profile = useProfileStore((state) => state.profile);
   const language = useProfileStore((state) => state.language);
   const setLanguage = useProfileStore((state) => state.setLanguage);
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    createMessage("assistant", "Tell me which scheme you want to understand, or ask what you may be eligible for.")
-  ]);
+  const [messages, setMessages] = useState<ChatMessage[]>(() => createInitialMessages(initialScheme));
   const [isStreaming, setIsStreaming] = useState(false);
+
+  useEffect(() => {
+    setMessages(createInitialMessages(initialScheme));
+    setIsStreaming(false);
+  }, [initialScheme]);
 
   const sendMessage = useCallback(
     async (content: string) => {

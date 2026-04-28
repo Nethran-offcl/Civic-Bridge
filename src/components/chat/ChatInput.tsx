@@ -62,9 +62,9 @@ export function ChatInput({
   }
 
   return (
-    <form onSubmit={submit} className="space-y-2 border-t border-slate-200 bg-white p-3">
+    <form onSubmit={submit} className="space-y-2 border-t border-slate-200 bg-white p-3 dark:border-white/10 dark:bg-slate-950">
       {warning ? (
-        <div className="flex items-center gap-2 rounded-md bg-rose-50 px-3 py-2 text-sm font-medium text-rose-700">
+        <div className="flex items-center gap-2 rounded-md bg-rose-50 px-3 py-2 text-sm font-medium text-rose-700 dark:bg-rose-500/10 dark:text-rose-200">
           <ShieldAlert className="h-4 w-4" />
           Do not share Aadhaar, OTP, passwords, or bank details here.
         </div>
@@ -75,6 +75,7 @@ export function ChatInput({
           onChange={(event) => setMessage(event.target.value)}
           placeholder="Ask about documents, eligibility, or application steps"
           disabled={disabled}
+          className="dark:shadow-none"
         />
         <Button
           type="button"
