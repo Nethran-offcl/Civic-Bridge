@@ -1,17 +1,36 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { ShieldCheck, ArrowLeft } from "lucide-react";
+import { ShieldCheck, ArrowLeft, UserRound } from "lucide-react";
 import { LanguageToggle } from "./LanguageToggle";
 import { ThemeToggle } from "./ThemeToggle";
 import { useTranslation } from "@/hooks/useTranslation";
+import { createClient } from "@/lib/supabase/client";
 
 export function Header() {
   const router = useRouter();
   const pathname = usePathname();
   const { t } = useTranslation();
+  const [isSignedIn, setIsSignedIn] = useState(false);
+
+  useEffect(() => {
+    const supabase = createClient();
+
+    supabase.auth.getUser().then(({ data }) => {
+      setIsSignedIn(Boolean(data.user));
+    });
+
+    const {
+      data: { subscription }
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setIsSignedIn(Boolean(session?.user));
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur dark:border-white/10 dark:glass-panel dark:bg-transparent transition-colors">
@@ -37,8 +56,23 @@ export function Header() {
           <Link href="/intake" className="hover:text-brand-600 dark:hover:text-sky-400 transition-colors">{t("Intake")}</Link>
           <Link href="/results" className="hover:text-brand-600 dark:hover:text-sky-400 transition-colors">{t("Results")}</Link>
           <Link href="/chat" className="hover:text-brand-600 dark:hover:text-sky-400 transition-colors">{t("Chat")}</Link>
+          {isSignedIn ? (
+            <Link href="/profile" className="hover:text-brand-600 dark:hover:text-sky-400 transition-colors">{t("Profile")}</Link>
+          ) : (
+            <>
+              <Link href="/login" className="hover:text-brand-600 dark:hover:text-sky-400 transition-colors">{t("Login")}</Link>
+              <Link href="/register" className="hover:text-brand-600 dark:hover:text-sky-400 transition-colors">{t("Register")}</Link>
+            </>
+          )}
         </nav>
         <div className="flex items-center gap-3">
+          <Link
+            href={isSignedIn ? "/profile" : "/login"}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md text-slate-600 transition-colors hover:bg-slate-100 hover:text-brand-600 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-sky-400 md:hidden"
+            aria-label={isSignedIn ? t("Profile") : t("Login")}
+          >
+            <UserRound className="h-5 w-5" />
+          </Link>
           <div className="hidden items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 border border-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20 sm:flex transition-colors">
             <ShieldCheck className="h-4 w-4" />
             {t("Private by default")}
