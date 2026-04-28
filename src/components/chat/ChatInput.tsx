@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { Mic, MicOff, Send, ShieldAlert } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
@@ -21,18 +21,18 @@ export function ChatInput({
 }) {
   const [message, setMessage] = useState("");
   const [isListening, setIsListening] = useState(false);
-  const [supportsSpeech, setSupportsSpeech] = useState(false);
-  const { t } = useTranslation();
-
-  const warning = sensitivePattern.test(message);
-
-  useEffect(() => {
+  const [supportsSpeech] = useState(() => {
+    if (typeof window === "undefined") return false;
     const speechWindow = window as Window & {
       webkitSpeechRecognition?: CivicBridgeSpeechRecognitionConstructor;
       SpeechRecognition?: CivicBridgeSpeechRecognitionConstructor;
     };
-    setSupportsSpeech(Boolean(speechWindow.webkitSpeechRecognition ?? speechWindow.SpeechRecognition));
-  }, []);
+
+    return Boolean(speechWindow.webkitSpeechRecognition ?? speechWindow.SpeechRecognition);
+  });
+  const { t } = useTranslation();
+
+  const warning = sensitivePattern.test(message);
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
