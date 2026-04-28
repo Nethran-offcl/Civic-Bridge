@@ -13,6 +13,9 @@
   * Added global back arrow navigation across the intake and results screens.
 * **Routing & Navigation**: Fixed broken URLs and routing issues faced during page redirection.
 * **AI Chat Interface**: Set up the chat UI (`MessageBubble`, etc.) with markdown rendering for scheme-specific AI queries.
+* **Multilingual Support**: Implemented robust website translation and localization, seamlessly supporting a workflow across over 5 major Indian languages alongside English for maximum accessibility.
+* **Transparency & Action Plans**: Upgraded the scheme details pages to directly present clear "Document Checklists," estimated application processing timelines, and direct official portal URLs for complete transparency.
+* **Dynamic Analytics**: Enhanced the homepage to automatically analyze the scheme database and dynamically display metrics for the top 4 most common scheme categories.
 
 ## Current Progress
 * The core user journey (Intake Form ➔ Matched Results ➔ Scheme Details) is fully functional, smooth, and highly responsive.
@@ -22,5 +25,4 @@
 ## Next Steps
 * Integrate backend database fully for saving user profiles and persistent matches via Supabase.
 * Enhance the RAG (Retrieval-Augmented Generation) pipeline for the AI chatbot to provide more strictly accurate, context-aware scheme recommendations.
-* Expand and verify multilingual support (localization) across all user-facing UI components.
-* Continue expanding the scheme database to incorporate schemes from additional states beyond Karnataka.
+* Expand the scheme database continuously to build nationwide coverage across all Indian states.

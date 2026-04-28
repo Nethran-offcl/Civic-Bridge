@@ -3,13 +3,7 @@
 import Link from "next/link";
 import { ArrowRight, Bot, CheckCircle2, FileSearch, Languages, ShieldCheck, Sparkles } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
-
-const categories = [
-  { label: "Agriculture", count: "4+", color: "from-emerald-500 to-emerald-600", shadow: "shadow-emerald-500/20" },
-  { label: "Health", count: "1+", color: "from-blue-500 to-blue-600", shadow: "shadow-blue-500/20" },
-  { label: "Education", count: "2+", color: "from-violet-500 to-violet-600", shadow: "shadow-violet-500/20" },
-  { label: "Labour", count: "3+", color: "from-amber-500 to-amber-600", shadow: "shadow-amber-500/20" }
-];
+import { getAllSchemes } from "@/lib/schemes";
 
 const steps = [
   { icon: FileSearch, title: "Tell us basics", text: "Age, location, occupation, income, and optional details." },
@@ -19,7 +13,32 @@ const steps = [
 
 export default function HomePage() {
   const { t } = useTranslation();
-  const schemeCount = 37;
+  const allSchemes = getAllSchemes();
+  const schemeCount = allSchemes.length;
+
+  const categoryCounts = allSchemes.reduce((acc, scheme) => {
+    const cat = scheme.category || 'other';
+    acc[cat] = (acc[cat] || 0) + 1;
+    return acc;
+  }, {} as Record<string, number>);
+
+  const sortedCategories = Object.entries(categoryCounts)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 4);
+
+  const categoryStyles = [
+    { color: "from-emerald-500 to-emerald-600", shadow: "shadow-emerald-500/20" },
+    { color: "from-blue-500 to-blue-600", shadow: "shadow-blue-500/20" },
+    { color: "from-violet-500 to-violet-600", shadow: "shadow-violet-500/20" },
+    { color: "from-amber-500 to-amber-600", shadow: "shadow-amber-500/20" }
+  ];
+
+  const categories = sortedCategories.map(([cat, count], i) => ({
+    label: cat.charAt(0).toUpperCase() + cat.slice(1), // Capitalize first letter
+    count: `${count}+`,
+    color: categoryStyles[i].color,
+    shadow: categoryStyles[i].shadow
+  }));
 
   return (
     <div className="relative min-h-screen overflow-hidden transition-colors">

@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import { getAllSchemes, getCategoryAccent, getSchemeById } from "@/lib/schemes";
+import { SchemeReadiness } from "@/components/results/SchemeReadiness";
 
 export function generateStaticParams() {
   return getAllSchemes().map((scheme) => ({ id: scheme.id }));
@@ -49,6 +50,8 @@ export default async function SchemeDetailPage({ params }: { params: Promise<{ i
           </div>
         </div>
       </section>
+
+      <SchemeReadiness scheme={scheme} />
 
       <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
         <div className="space-y-6">
