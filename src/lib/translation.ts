@@ -254,27 +254,8 @@ async function translateWithGoogle(texts: string[], targetLanguage: SupportedLan
 }
 
 async function translateWithGemini(texts: string[], targetLanguage: SupportedLanguage) {
-  const genAI = getGeminiClient();
-  if (!genAI || targetLanguage === "en") return null;
-
-  const model = genAI.getGenerativeModel({
-    model: "gemini-2.5-flash",
-    generationConfig: { temperature: 0.1, maxOutputTokens: 4096 }
-  });
-
-  const prompt = [
-    `Translate each string into ${getLanguageName(targetLanguage)}.`,
-    "Keep brand names, URLs, numbers, and government scheme names unchanged where appropriate.",
-    "Return only a JSON array of strings in the same order.",
-    JSON.stringify(texts)
-  ].join("\n");
-
-  const result = await model.generateContent(prompt);
-  const raw = result.response.text().trim().replace(/^```json\s*/i, "").replace(/^```\s*/i, "").replace(/```$/i, "");
-  const parsed = JSON.parse(raw) as unknown;
-  if (!Array.isArray(parsed) || parsed.some((item) => typeof item !== "string")) return null;
-  if (parsed.length !== texts.length) return null;
-  return parsed as string[];
+  // Skip Gemini to avoid quota limits - use local fallback only
+  return null;
 }
 
 export async function translateTexts(texts: string[], targetLanguage: SupportedLanguage) {

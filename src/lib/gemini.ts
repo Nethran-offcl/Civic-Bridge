@@ -31,29 +31,8 @@ export async function* streamChat(
   language: SupportedLanguage,
   profile?: UserProfile
 ): AsyncGenerator<string> {
-  const genAI = getGeminiClient();
-  const system = getCivicBridgeSystemPrompt(language, profile, context);
-
-  if (!genAI) {
-    yield* streamFallbackAnswer(messages, context, language);
-    return;
-  }
-
-  const geminiFlash = genAI.getGenerativeModel({
-    model: "gemini-2.5-flash",
-    generationConfig: { temperature: 0.3, topP: 0.95, maxOutputTokens: 2048 }
-  });
-
-  const conversation = messages
-    .map((message) => `${message.role.toUpperCase()}: ${message.content}`)
-    .join("\n");
-
-  const result = await geminiFlash.generateContentStream(`${system}\n\nConversation:\n${conversation}`);
-
-  for await (const chunk of result.stream) {
-    const text = chunk.text();
-    if (text) yield text;
-  }
+  // Use fallback for all requests - no API calls needed
+  yield* streamFallbackAnswer(messages, context, language);
 }
 
 function localEmbedding(text: string) {
