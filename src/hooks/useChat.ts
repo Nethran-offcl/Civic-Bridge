@@ -1,9 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { detectLanguage } from "@/lib/i18n";
+import { FALLBACK_TRANSLATIONS } from "@/lib/i18n";
 import { useProfileStore } from "@/store/profileStore";
 import type { ChatMessage } from "@/types/chat";
+import type { SupportedLanguage } from "@/types/profile";
 import type { Scheme } from "@/types/scheme";
 
 function createMessage(role: ChatMessage["role"], content: string): ChatMessage {
@@ -31,9 +32,9 @@ function createSchemeSummary(scheme: Scheme) {
   ].join(" ");
 }
 
-function createInitialMessages(initialScheme?: Scheme) {
+function createInitialMessages(language: SupportedLanguage, initialScheme?: Scheme) {
   if (!initialScheme) {
-    return [createMessage("assistant", "Tell me which scheme you want to understand, or ask what you may be eligible for.")];
+    return [createMessage("assistant", FALLBACK_TRANSLATIONS[language].chatStart)];
   }
 
   return [createMessage("assistant", createSchemeSummary(initialScheme))];
@@ -42,21 +43,20 @@ function createInitialMessages(initialScheme?: Scheme) {
 export function useChat(initialSchemeId?: string, initialScheme?: Scheme) {
   const profile = useProfileStore((state) => state.profile);
   const language = useProfileStore((state) => state.language);
-  const setLanguage = useProfileStore((state) => state.setLanguage);
-  const [messages, setMessages] = useState<ChatMessage[]>(() => createInitialMessages(initialScheme));
+  const [messages, setMessages] = useState<ChatMessage[]>(() => createInitialMessages(language, initialScheme));
   const [isStreaming, setIsStreaming] = useState(false);
 
   useEffect(() => {
-    setMessages(createInitialMessages(initialScheme));
-    setIsStreaming(false);
-  }, [initialScheme]);
+    const timeout = window.setTimeout(() => {
+      setMessages(createInitialMessages(language, initialScheme));
+      setIsStreaming(false);
+    }, 0);
+    return () => window.clearTimeout(timeout);
+  }, [initialScheme, language]);
 
   const sendMessage = useCallback(
     async (content: string) => {
       if (!content.trim() || isStreaming) return;
-
-      const detected = detectLanguage(content);
-      if (detected !== language) setLanguage(detected);
 
       const userMessage = createMessage("user", content.trim());
       const assistantMessage = createMessage("assistant", "");
@@ -70,7 +70,7 @@ export function useChat(initialSchemeId?: string, initialScheme?: Scheme) {
         body: JSON.stringify({
           messages: [...messages, userMessage],
           profile,
-          language: detected,
+          language,
           schemeId: initialSchemeId
         })
       });
@@ -109,7 +109,7 @@ export function useChat(initialSchemeId?: string, initialScheme?: Scheme) {
 
       setIsStreaming(false);
     },
-    [initialSchemeId, isStreaming, language, messages, profile, setLanguage]
+    [initialSchemeId, isStreaming, language, messages, profile]
   );
 
   return {

@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/ThemeProvider";
-
-const inter = Inter({ subsets: ["latin"], display: "swap" });
+import { AppTranslator } from "@/components/AppTranslator";
 
 export const metadata: Metadata = {
   title: "CivicBridge",
@@ -18,13 +16,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
+          <AppTranslator />
           <div className="flex min-h-screen flex-col">
             <Header />
             <main className="flex-1">{children}</main>

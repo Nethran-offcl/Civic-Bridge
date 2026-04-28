@@ -1,0 +1,299 @@
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import { FALLBACK_TRANSLATIONS, getLanguageName, SUPPORTED_LANGUAGES } from "@/lib/i18n";
+import type { SupportedLanguage } from "@/types/profile";
+
+type GoogleTranslateResponse = {
+  data?: {
+    translations?: Array<{
+      translatedText?: string;
+      detectedSourceLanguage?: string;
+    }>;
+  };
+  error?: {
+    message?: string;
+  };
+};
+
+let geminiClient: GoogleGenerativeAI | null = null;
+
+const EXACT_TRANSLATIONS: Partial<Record<SupportedLanguage, Record<string, string>>> = {
+  hi: {
+    "Ask AI Assistant": "AI सहायक से पूछें",
+    "Find my schemes": "मेरी योजनाएं खोजें",
+    Intake: "जानकारी",
+    Results: "परिणाम",
+    Chat: "चैट",
+    "Private by default": "डिफॉल्ट रूप से निजी",
+    "Privacy-first scheme discovery": "गोपनीयता-प्रथम योजना खोज",
+    "Unlock your": "अपने",
+    "Civic Benefits": "नागरिक लाभ खोलें",
+    "Active Schemes": "सक्रिय योजनाएं",
+    Languages: "भाषाएं",
+    "Free & Private": "मुफ्त और निजी",
+    "Live Match Engine": "लाइव मिलान इंजन",
+    "How it works": "यह कैसे काम करता है",
+    "Tell us basics": "बुनियादी जानकारी दें",
+    "See matches": "मिलान देखें",
+    "Ask follow-ups": "आगे के सवाल पूछें",
+    "CivicBridge assistant": "CivicBridge सहायक",
+    "Ask AI": "AI से पूछें",
+    Apply: "आवेदन करें",
+    Details: "विवरण",
+    "Top benefit": "मुख्य लाभ",
+    Benefits: "लाभ",
+    Documents: "दस्तावेज",
+    "Application steps": "आवेदन के चरण",
+    "Eligibility notes": "पात्रता नोट्स",
+    "Start intake": "जानकारी भरना शुरू करें",
+    "Edit profile": "प्रोफाइल संपादित करें",
+    "Matched schemes": "मिली हुई योजनाएं",
+    Back: "वापस",
+    Next: "आगे",
+    "Show my schemes": "मेरी योजनाएं दिखाएं",
+    "Matching...": "मिलान हो रहा है..."
+  },
+  kn: {
+    "Ask AI Assistant": "AI ಸಹಾಯಕನನ್ನು ಕೇಳಿ",
+    "Find my schemes": "ನನ್ನ ಯೋಜನೆಗಳನ್ನು ಹುಡುಕಿ",
+    Intake: "ಮಾಹಿತಿ",
+    Results: "ಫಲಿತಾಂಶಗಳು",
+    Chat: "ಚಾಟ್",
+    "Private by default": "ಸ್ವಯಂ ಖಾಸಗಿ",
+    "Privacy-first scheme discovery": "ಗೌಪ್ಯತೆಗೆ ಮೊದಲ ಆದ್ಯತೆ ನೀಡುವ ಯೋಜನೆ ಹುಡುಕಾಟ",
+    "Unlock your": "ನಿಮ್ಮ",
+    "Civic Benefits": "ನಾಗರಿಕ ಲಾಭಗಳನ್ನು ತೆರೆಯಿರಿ",
+    "Active Schemes": "ಸಕ್ರಿಯ ಯೋಜನೆಗಳು",
+    Languages: "ಭಾಷೆಗಳು",
+    "Free & Private": "ಉಚಿತ ಮತ್ತು ಖಾಸಗಿ",
+    "Live Match Engine": "ಲೈವ್ ಹೊಂದಾಣಿಕೆ ಎಂಜಿನ್",
+    "How it works": "ಇದು ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ",
+    "Tell us basics": "ಮೂಲ ಮಾಹಿತಿ ನೀಡಿ",
+    "See matches": "ಹೊಂದಾಣಿಕೆಗಳನ್ನು ನೋಡಿ",
+    "Ask follow-ups": "ಮುಂದಿನ ಪ್ರಶ್ನೆಗಳನ್ನು ಕೇಳಿ",
+    "CivicBridge assistant": "CivicBridge ಸಹಾಯಕ",
+    "Ask AI": "AI ಕೇಳಿ",
+    Apply: "ಅರ್ಜಿ ಸಲ್ಲಿಸಿ",
+    Details: "ವಿವರಗಳು",
+    "Top benefit": "ಮುಖ್ಯ ಲಾಭ",
+    Benefits: "ಲಾಭಗಳು",
+    Documents: "ದಾಖಲೆಗಳು",
+    "Application steps": "ಅರ್ಜಿಯ ಹಂತಗಳು",
+    "Eligibility notes": "ಅರ್ಹತಾ ಟಿಪ್ಪಣಿಗಳು",
+    "Start intake": "ಮಾಹಿತಿ ಆರಂಭಿಸಿ",
+    "Edit profile": "ಪ್ರೊಫೈಲ್ ತಿದ್ದುಪಡಿ",
+    "Matched schemes": "ಹೊಂದಿದ ಯೋಜನೆಗಳು",
+    Back: "ಹಿಂದೆ",
+    Next: "ಮುಂದೆ",
+    "Show my schemes": "ನನ್ನ ಯೋಜನೆಗಳನ್ನು ತೋರಿಸಿ",
+    "Matching...": "ಹೊಂದಿಸಲಾಗುತ್ತಿದೆ..."
+  },
+  ta: {
+    "Ask AI Assistant": "AI உதவியாளரிடம் கேள்",
+    "Find my schemes": "என் திட்டங்களை கண்டறி",
+    Intake: "விவரங்கள்",
+    Results: "முடிவுகள்",
+    Chat: "அரட்டை",
+    "Private by default": "இயல்பாக தனியுரிமை",
+    "Privacy-first scheme discovery": "தனியுரிமை முதன்மை திட்ட கண்டறிதல்",
+    "Unlock your": "உங்கள்",
+    "Civic Benefits": "குடிமக்கள் நன்மைகளை திறக்கவும்",
+    "Active Schemes": "செயலில் உள்ள திட்டங்கள்",
+    Languages: "மொழிகள்",
+    "Free & Private": "இலவசம் மற்றும் தனியுரிமை",
+    "Live Match Engine": "நேரடி பொருத்த இயந்திரம்",
+    "How it works": "இது எப்படி செயல்படுகிறது",
+    "Tell us basics": "அடிப்படை விவரங்களை சொல்லுங்கள்",
+    "See matches": "பொருத்தங்களை பார்க்கவும்",
+    "Ask follow-ups": "தொடர் கேள்விகள் கேளுங்கள்",
+    "CivicBridge assistant": "CivicBridge உதவியாளர்",
+    "Ask AI": "AI-யிடம் கேள்",
+    Apply: "விண்ணப்பிக்கவும்",
+    Details: "விவரங்கள்",
+    "Top benefit": "முக்கிய நன்மை",
+    Benefits: "நன்மைகள்",
+    Documents: "ஆவணங்கள்",
+    "Application steps": "விண்ணப்ப படிகள்",
+    "Eligibility notes": "தகுதி குறிப்புகள்",
+    "Start intake": "விவரங்களை தொடங்கு",
+    "Edit profile": "சுயவிவரத்தை திருத்து",
+    "Matched schemes": "பொருந்திய திட்டங்கள்",
+    Back: "பின்",
+    Next: "அடுத்து",
+    "Show my schemes": "என் திட்டங்களை காட்டு",
+    "Matching...": "பொருத்தப்படுகிறது..."
+  },
+  te: {
+    "Ask AI Assistant": "AI సహాయకుడిని అడగండి",
+    "Find my schemes": "నా పథకాలను కనుగొనండి",
+    Intake: "వివరాలు",
+    Results: "ఫలితాలు",
+    Chat: "చాట్",
+    "Private by default": "డిఫాల్ట్‌గా ప్రైవేట్",
+    "Privacy-first scheme discovery": "గోప్యతకు ప్రాధాన్యమిచ్చే పథక శోధన",
+    "Unlock your": "మీ",
+    "Civic Benefits": "పౌర ప్రయోజనాలను తెరవండి",
+    "Active Schemes": "సక్రియ పథకాలు",
+    Languages: "భాషలు",
+    "Free & Private": "ఉచితం మరియు ప్రైవేట్",
+    "Live Match Engine": "లైవ్ మ్యాచ్ ఇంజిన్",
+    "How it works": "ఇది ఎలా పనిచేస్తుంది",
+    "Tell us basics": "ప్రాథమిక వివరాలు చెప్పండి",
+    "See matches": "సరిపోలినవి చూడండి",
+    "Ask follow-ups": "తదుపరి ప్రశ్నలు అడగండి",
+    "CivicBridge assistant": "CivicBridge సహాయకుడు",
+    "Ask AI": "AIని అడగండి",
+    Apply: "దరఖాస్తు చేయండి",
+    Details: "వివరాలు",
+    "Top benefit": "ప్రధాన ప్రయోజనం",
+    Benefits: "ప్రయోజనాలు",
+    Documents: "పత్రాలు",
+    "Application steps": "దరఖాస్తు దశలు",
+    "Eligibility notes": "అర్హత గమనికలు",
+    "Start intake": "వివరాలు ప్రారంభించండి",
+    "Edit profile": "ప్రొఫైల్ మార్చండి",
+    "Matched schemes": "సరిపోలిన పథకాలు",
+    Back: "వెనుకకు",
+    Next: "తదుపరి",
+    "Show my schemes": "నా పథకాలను చూపించు",
+    "Matching...": "సరిపోలుస్తోంది..."
+  },
+  mr: {
+    "Ask AI Assistant": "AI सहाय्यकाला विचारा",
+    "Find my schemes": "माझ्या योजना शोधा",
+    Intake: "माहिती",
+    Results: "निकाल",
+    Chat: "चॅट",
+    "Private by default": "डीफॉल्टने खाजगी",
+    "Privacy-first scheme discovery": "गोपनीयता-प्रथम योजना शोध",
+    "Unlock your": "तुमचे",
+    "Civic Benefits": "नागरिक लाभ उघडा",
+    "Active Schemes": "सक्रिय योजना",
+    Languages: "भाषा",
+    "Free & Private": "मोफत आणि खाजगी",
+    "Live Match Engine": "लाइव्ह जुळणी इंजिन",
+    "How it works": "हे कसे काम करते",
+    "Tell us basics": "मूलभूत माहिती द्या",
+    "See matches": "जुळण्या पहा",
+    "Ask follow-ups": "पुढील प्रश्न विचारा",
+    "CivicBridge assistant": "CivicBridge सहाय्यक",
+    "Ask AI": "AI ला विचारा",
+    Apply: "अर्ज करा",
+    Details: "तपशील",
+    "Top benefit": "मुख्य लाभ",
+    Benefits: "लाभ",
+    Documents: "कागदपत्रे",
+    "Application steps": "अर्जाचे टप्पे",
+    "Eligibility notes": "पात्रता नोंदी",
+    "Start intake": "माहिती भरणे सुरू करा",
+    "Edit profile": "प्रोफाइल संपादित करा",
+    "Matched schemes": "जुळलेल्या योजना",
+    Back: "मागे",
+    Next: "पुढे",
+    "Show my schemes": "माझ्या योजना दाखवा",
+    "Matching...": "जुळवणी सुरू आहे..."
+  }
+};
+
+function getGeminiClient() {
+  const key = process.env.GEMINI_API_KEY;
+  if (!key) return null;
+  if (!geminiClient) geminiClient = new GoogleGenerativeAI(key);
+  return geminiClient;
+}
+
+function decodeHtmlEntities(value: string) {
+  return value
+    .replace(/&#39;/g, "'")
+    .replace(/&quot;/g, '"')
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">");
+}
+
+function localFallback(texts: string[], targetLanguage: SupportedLanguage) {
+  const dictionary = FALLBACK_TRANSLATIONS[targetLanguage];
+  const englishDictionary = FALLBACK_TRANSLATIONS.en;
+
+  return texts.map((text) => {
+    const exact = EXACT_TRANSLATIONS[targetLanguage]?.[text];
+    if (exact) return exact;
+
+    const entry = Object.entries(englishDictionary).find(([, english]) => english === text);
+    if (!entry) return text;
+    return dictionary[entry[0]] ?? text;
+  });
+}
+
+async function translateWithGoogle(texts: string[], targetLanguage: SupportedLanguage) {
+  const key = process.env.GOOGLE_TRANSLATE_API_KEY;
+  if (!key || targetLanguage === "en") return null;
+
+  const response = await fetch(`https://translation.googleapis.com/language/translate/v2?key=${key}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      q: texts,
+      target: SUPPORTED_LANGUAGES[targetLanguage].translateCode,
+      format: "text"
+    })
+  });
+
+  const data = (await response.json()) as GoogleTranslateResponse;
+  if (!response.ok) {
+    throw new Error(data.error?.message ?? "Google Translate request failed");
+  }
+
+  const translations = data.data?.translations ?? [];
+  if (translations.length !== texts.length) return null;
+  return translations.map((item, index) => {
+    const translated = decodeHtmlEntities(item.translatedText ?? "");
+    return translated === texts[index]
+      ? EXACT_TRANSLATIONS[targetLanguage]?.[texts[index]] ?? translated
+      : translated;
+  });
+}
+
+async function translateWithGemini(texts: string[], targetLanguage: SupportedLanguage) {
+  const genAI = getGeminiClient();
+  if (!genAI || targetLanguage === "en") return null;
+
+  const model = genAI.getGenerativeModel({
+    model: "gemini-2.5-flash",
+    generationConfig: { temperature: 0.1, maxOutputTokens: 4096 }
+  });
+
+  const prompt = [
+    `Translate each string into ${getLanguageName(targetLanguage)}.`,
+    "Keep brand names, URLs, numbers, and government scheme names unchanged where appropriate.",
+    "Return only a JSON array of strings in the same order.",
+    JSON.stringify(texts)
+  ].join("\n");
+
+  const result = await model.generateContent(prompt);
+  const raw = result.response.text().trim().replace(/^```json\s*/i, "").replace(/^```\s*/i, "").replace(/```$/i, "");
+  const parsed = JSON.parse(raw) as unknown;
+  if (!Array.isArray(parsed) || parsed.some((item) => typeof item !== "string")) return null;
+  if (parsed.length !== texts.length) return null;
+  return parsed as string[];
+}
+
+export async function translateTexts(texts: string[], targetLanguage: SupportedLanguage) {
+  const normalized = texts.map((text) => text.trim()).filter(Boolean);
+  if (targetLanguage === "en" || normalized.length === 0) return normalized;
+
+  try {
+    const google = await translateWithGoogle(normalized, targetLanguage);
+    if (google) return google;
+  } catch (error) {
+    console.warn("Google Translate failed, trying Gemini fallback.", error);
+  }
+
+  try {
+    const gemini = await translateWithGemini(normalized, targetLanguage);
+    if (gemini) return gemini;
+  } catch (error) {
+    console.warn("Gemini translation failed, using local fallback.", error);
+  }
+
+  return localFallback(normalized, targetLanguage);
+}
