@@ -16,6 +16,8 @@
 * **Multilingual Support**: Implemented robust website translation and localization, seamlessly supporting a workflow across over 5 major Indian languages alongside English for maximum accessibility.
 * **Transparency & Action Plans**: Upgraded the scheme details pages to directly present clear "Document Checklists," estimated application processing timelines, and direct official portal URLs for complete transparency.
 * **Dynamic Analytics**: Enhanced the homepage to automatically analyze the scheme database and dynamically display metrics for the top 4 most common scheme categories.
+* **Application PDF Generation**: Built a robust, paginated PDF generator allowing users to download personalized, offline "Application Packets," fully compatible with the user's localized language interface.
+* **Milestone Achieved**: ✅ Successfully reached the milestone of 70 fully populated Central and State schemes in the database!
 
 ## Current Progress
 * The core user journey (Intake Form ➔ Matched Results ➔ Scheme Details) is fully functional, smooth, and highly responsive.

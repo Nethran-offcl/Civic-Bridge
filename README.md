@@ -97,10 +97,12 @@ If you open chat directly from `/chat` without a scheme selected, the assistant 
 - Intake-based scheme matching
 - Ranked eligibility results
 - Scheme detail pages with benefits, documents, and application steps
+- Downloadable PDF application packets for offline use (with translated text)
 - Scheme-aware AI chat from `Ask AI`
 - General AI chat when no scheme is selected
 - Local fallback responses when external AI is unavailable
-- Multilingual support
+- Multilingual support (seamlessly supporting major Indian languages via translation)
+- Over 70+ central and state schemes supported locally
 
 ## Notes
 
