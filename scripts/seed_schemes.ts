@@ -2,6 +2,29 @@ import { createClient } from "@supabase/supabase-js";
 import centralSchemes from "../data/schemes/central_schemes.json";
 import stateSchemes from "../data/schemes/state_schemes.json";
 
+import fs from 'fs';
+import path from 'path';
+
+try {
+  const envPath = path.resolve(process.cwd(), '.env.local');
+  const envContent = fs.readFileSync(envPath, 'utf8');
+  envContent.split('\n').forEach(line => {
+    const match = line.match(/^\s*([\w.-]+)\s*=\s*(.*)?\s*$/);
+    if (match) {
+      let val = match[2];
+      if (val && val.startsWith('"') && val.endsWith('"')) {
+        val = val.slice(1, -1);
+      }
+      if (val && val.startsWith("'") && val.endsWith("'")) {
+        val = val.slice(1, -1);
+      }
+      process.env[match[1]] = val.trim();
+    }
+  });
+} catch (e) {
+  // Ignore
+}
+
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
@@ -15,19 +38,23 @@ const supabase = createClient(supabaseUrl, serviceRoleKey, {
 
 const schemes = [...centralSchemes, ...stateSchemes];
 
-const { error } = await supabase.from("schemes").upsert(
-  schemes.map((scheme) => ({
-    id: scheme.id,
-    name: scheme.name,
-    category: scheme.category,
-    state: "state" in scheme ? scheme.state : null,
-    data: scheme
-  })),
-  { onConflict: "id" }
-);
+async function seed() {
+  const { error } = await supabase.from("schemes").upsert(
+    schemes.map((scheme) => ({
+      id: scheme.id,
+      name: scheme.name,
+      category: scheme.category,
+      state: "state" in scheme ? scheme.state : null,
+      data: scheme
+    })),
+    { onConflict: "id" }
+  );
 
-if (error) {
-  throw error;
+  if (error) {
+    throw error;
+  }
+
+  console.log(`Seeded ${schemes.length} schemes.`);
 }
 
-console.log(`Seeded ${schemes.length} schemes.`);
+seed().catch(console.error);

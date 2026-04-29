@@ -259,13 +259,15 @@ async function translateWithGemini(texts: string[], targetLanguage: SupportedLan
   
   const targetLanguageName = SUPPORTED_LANGUAGES[targetLanguage].name;
   
-  const model = client.getGenerativeModel({ model: "gemini-2.5-flash" });
-  const prompt = `Translate the following JSON array of strings into ${targetLanguageName} language. 
+  const model = client.getGenerativeModel({ 
+    model: "gemini-flash-latest",
+    systemInstruction: `Translate the following JSON array of strings into ${targetLanguageName} language. 
 You MUST translate or transliterate EVERY string into the ${targetLanguageName} script. Do not leave any string in English.
 Maintain the exact array structure, order, and length. 
-Only return the translated JSON array, with no markdown formatting or other text.
-
-Strings to translate:
+Only return the translated JSON array, with no markdown formatting or other text.`
+  });
+  
+  const prompt = `Strings to translate:
 ${JSON.stringify(texts)}`;
 
   try {
