@@ -14,6 +14,7 @@ export function MessageBubble({ message }: { message: ChatMessage }) {
         </div>
       ) : null}
       <div
+        data-no-translate="true"
         className={cn(
           "max-w-[82%] rounded-lg px-4 py-3 text-sm leading-6",
           isUser ? "bg-brand-500 text-white dark:bg-sky-600 dark:text-white" : "bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-200"

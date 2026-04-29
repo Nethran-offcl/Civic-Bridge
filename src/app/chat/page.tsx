@@ -2,7 +2,8 @@ import { Suspense } from "react";
 import { getSchemeById } from "@/lib/schemes";
 import { ChatWindow } from "@/components/chat/ChatWindow";
 
-export default function ChatPage({ searchParams }: { searchParams?: { schemeId?: string } }) {
+export default async function ChatPage(props: { searchParams: Promise<{ schemeId?: string }> }) {
+  const searchParams = await props.searchParams;
   const schemeId = searchParams?.schemeId;
   const selectedScheme = schemeId ? getSchemeById(schemeId) : undefined;
 
