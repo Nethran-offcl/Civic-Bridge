@@ -47,11 +47,33 @@ export function useChat(initialSchemeId?: string, initialScheme?: Scheme) {
   const [isStreaming, setIsStreaming] = useState(false);
 
   useEffect(() => {
-    const timeout = window.setTimeout(() => {
-      setMessages(createInitialMessages(language, initialScheme));
-      setIsStreaming(false);
-    }, 0);
-    return () => window.clearTimeout(timeout);
+    let active = true;
+    const init = createInitialMessages(language, initialScheme);
+    setMessages(init);
+    setIsStreaming(false);
+
+    if (initialScheme && language !== "en") {
+      fetch("/api/translate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: init[0].content, targetLanguage: language })
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (active && data.text) {
+            setMessages((current) => {
+              if (current.length === 1 && current[0].id === init[0].id) {
+                return [{ ...current[0], content: data.text as string }];
+              }
+              return current;
+            });
+          }
+        })
+        .catch(console.error);
+    }
+    return () => {
+      active = false;
+    };
   }, [initialScheme, language]);
 
   const sendMessage = useCallback(

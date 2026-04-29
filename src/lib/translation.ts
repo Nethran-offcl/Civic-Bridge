@@ -254,7 +254,33 @@ async function translateWithGoogle(texts: string[], targetLanguage: SupportedLan
 }
 
 async function translateWithGemini(texts: string[], targetLanguage: SupportedLanguage) {
-  // Skip Gemini to avoid quota limits - use local fallback only
+  const client = getGeminiClient();
+  if (!client) return null;
+  
+  const targetLanguageName = SUPPORTED_LANGUAGES[targetLanguage].name;
+  
+  const model = client.getGenerativeModel({ model: "gemini-2.5-flash" });
+  const prompt = `Translate the following JSON array of strings into ${targetLanguageName} language. 
+You MUST translate or transliterate EVERY string into the ${targetLanguageName} script. Do not leave any string in English.
+Maintain the exact array structure, order, and length. 
+Only return the translated JSON array, with no markdown formatting or other text.
+
+Strings to translate:
+${JSON.stringify(texts)}`;
+
+  try {
+    const result = await model.generateContent(prompt);
+    const responseText = result.response.text();
+    const cleanText = responseText.replace(/```json/gi, "").replace(/```/g, "").trim();
+    const translated = JSON.parse(cleanText) as string[];
+    
+    if (Array.isArray(translated) && translated.length === texts.length) {
+      return translated.map(t => decodeHtmlEntities(t));
+    }
+  } catch (error) {
+    console.warn("Gemini translation failed:", error);
+  }
+  
   return null;
 }
 

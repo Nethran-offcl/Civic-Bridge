@@ -4,6 +4,7 @@ import type { Scheme } from "@/types/scheme";
 import type { SupportedLanguage, UserProfile } from "@/types/profile";
 import { FALLBACK_TRANSLATIONS } from "./i18n";
 import { getCivicBridgeSystemPrompt } from "./prompts";
+import { translateTexts } from "./translation";
 
 let client: GoogleGenerativeAI | null = null;
 
@@ -31,7 +32,79 @@ export async function* streamChat(
   language: SupportedLanguage,
   profile?: UserProfile
 ): AsyncGenerator<string> {
-  // Use fallback for all requests - no API calls needed
+  const genAI = getGeminiClient();
+
+  if (genAI) {
+    try {
+      const systemInstruction = getCivicBridgeSystemPrompt(language, profile, context);
+      
+      const model = genAI.getGenerativeModel({ 
+        model: "gemini-flash-latest",
+        systemInstruction,
+      });
+
+      let rawHistory = messages.slice(0, -1).map(msg => ({
+        role: msg.role === "assistant" ? "model" : "user",
+        parts: [{ text: msg.content }]
+      }));
+
+      // Gemini requires history to start with 'user'
+      if (rawHistory.length > 0 && rawHistory[0].role === "model") {
+        rawHistory = [{ role: "user", parts: [{ text: "Hi, I need information about government schemes." }] }, ...rawHistory];
+      }
+
+      // Gemini requires strict alternation between 'user' and 'model'
+      const history: { role: string; parts: { text: string }[] }[] = [];
+      for (const msg of rawHistory) {
+        if (history.length === 0) {
+          history.push(msg);
+        } else {
+          const last = history[history.length - 1];
+          if (last.role === msg.role) {
+            last.parts[0].text += "\n\n" + msg.parts[0].text;
+          } else {
+            history.push(msg);
+          }
+        }
+      }
+      
+      const lastMessage = messages[messages.length - 1];
+
+      const chat = model.startChat({
+        history
+      });
+
+      const result = await chat.sendMessageStream(lastMessage.content);
+      
+      let receivedAny = false;
+      for await (const chunk of result.stream) {
+        const text = chunk.text();
+        if (text) {
+          receivedAny = true;
+          yield text;
+        }
+      }
+      
+      if (receivedAny) {
+        const warnings: Record<SupportedLanguage, string> = {
+          en: "\n\n⚠️ Important: Never share Aadhaar, OTP, passwords, or bank details in this chat.",
+          hi: "\n\n⚠️ महत्वपूर्ण: इस चैट में आधार, OTP, पासवर्ड या बैंक विवरण कभी साझा न करें।",
+          kn: "\n\n⚠️ ಪ್ರಮುಖ: ಈ ಚಾಟ್‌ನಲ್ಲಿ ಆಧಾರ್, ಒಟಿಪಿ, ಪಾಸ್‌ವರ್ಡ್‌ಗಳು ಅಥವಾ ಬ್ಯಾಂಕ್ ವಿವರಗಳನ್ನು ಎಂದಿಗೂ ಹಂಚಿಕೊಳ್ಳಬೇಡಿ.",
+          ta: "\n\n⚠️ முக்கியமானது: இந்த அரட்டையில் ஆதார், OTP, கடவுச்சொற்கள் அல்லது வங்கி விவரங்களை ஒருபோதும் பகிர வேண்டாம்.",
+          te: "\n\n⚠️ ముఖ్యమైనది: ఈ చాట్‌లో ఆధార్, OTP, పాస్‌వర్డ్‌లు లేదా బ్యాంక్ వివరాలను ఎప్పుడూ భాగస్వామ్యం చేయవద్దు.",
+          mr: "\n\n⚠️ महत्त्वाचे: या चॅटमध्ये आधार, OTP, पासवर्ड किंवा बँक तपशील कधीही शेअर करू नका.",
+          bn: "\n\n⚠️ গুরুত্বপূর্ণ: এই চ্যাটে কখনও আধার, OTP, পাসওয়ার্ড বা ব্যাঙ্কের বিবরণ শেয়ার করবেন না।",
+          gu: "\n\n⚠️ મહત્વપૂર્ણ: આ ચેટમાં ક્યારેય આધાર, OTP, પાસવર્ડ અથવા બેંક વિગતો શેર કરશો નહીં.",
+        };
+        yield warnings[language] || warnings.en;
+        return;
+      }
+    } catch (error) {
+      console.warn("Dynamic Gemini chat failed, falling back to static rules.", error);
+    }
+  }
+
+  // Use fallback if API key missing or generation failed
   yield* streamFallbackAnswer(messages, context, language);
 }
 
@@ -127,17 +200,149 @@ const fallbackLabels: Record<SupportedLanguage, {
 };
 
 async function* streamFallbackAnswer(messages: ChatMessage[], context: Scheme[], language: SupportedLanguage) {
-  const lastQuestion = messages[messages.length - 1]?.content ?? "this scheme";
+  const lastQuestion = messages[messages.length - 1]?.content ?? "";
   const primary = context[0];
-  const labels = fallbackLabels[language];
+  
+  if (!primary) {
+    yield FALLBACK_TRANSLATIONS[language].fallbackNoScheme;
+    return;
+  }
 
-  const answer = primary
-    ? `1. ${labels.basedOn}, ${primary.name} may be relevant for your question: "${lastQuestion}".\n2. ${labels.mainBenefit}: ${primary.benefits[0]?.amount ?? primary.benefits[0]?.title ?? labels.benefitVaries}.\n3. ${labels.documents}: ${primary.documents.slice(0, 4).join(", ")}.\n4. ${labels.apply}: ${primary.applicationUrl ?? primary.sourceUrl ?? labels.notListed}.\n5. ${labels.privacy}`
-    : FALLBACK_TRANSLATIONS[language].fallbackNoScheme;
+  let pName = primary.name;
+  let pBenefits = primary.benefits.map(b => ({ ...b }));
+  let pDocs = [...(primary.documents || [])];
+  let pElig = [...(primary.eligibilityCriteria || [])];
 
+  if (language !== "en") {
+    const map = new Map<string, string>();
+    const textsToTranslate = new Set<string>();
+    
+    textsToTranslate.add(primary.name);
+    primary.benefits.forEach(b => {
+      if (b.title) textsToTranslate.add(b.title);
+      if (b.amount) textsToTranslate.add(b.amount);
+    });
+    primary.documents?.forEach(d => { if (d) textsToTranslate.add(d); });
+    primary.eligibilityCriteria?.forEach(e => { if (e) textsToTranslate.add(e); });
+    
+    const uniqueTexts = Array.from(textsToTranslate).filter(Boolean);
+    if (uniqueTexts.length > 0) {
+      const translatedTexts = await translateTexts(uniqueTexts, language);
+      uniqueTexts.forEach((text, i) => {
+        map.set(text, translatedTexts[i] || text);
+      });
+    }
+
+    pName = map.get(primary.name) || primary.name;
+    pBenefits = primary.benefits.map(b => ({
+      ...b,
+      title: map.get(b.title) || b.title,
+      amount: b.amount ? (map.get(b.amount) || b.amount) : undefined
+    }));
+    pDocs = (primary.documents || []).map(d => map.get(d) || d);
+    pElig = (primary.eligibilityCriteria || []).map(e => map.get(e) || e);
+  }
+
+  const questionLower = lastQuestion.toLowerCase();
+  let answer = "";
+
+  // Map of introductory text for each language
+  const intros: Record<SupportedLanguage, string> = {
+    en: (name: string) => `${name} offers these benefits:\n`,
+    hi: (name: string) => `${name} ये लाभ प्रदान करती है:\n`,
+    kn: (name: string) => `${name} ಈ ಪ್ರಯೋಜನಗಳನ್ನು ಒದಗಿಸುತ್ತದೆ:\n`,
+    ta: (name: string) => `${name} இந்த நன்மைகளை வழங்குகிறது:\n`,
+    te: (name: string) => `${name} ఈ ప్రయోజనాలను అందిస్తుంది:\n`,
+    mr: (name: string) => `${name} हे लाभ प्रदान करते:\n`,
+    bn: (name: string) => `${name} এই সুবিধাগুলি প্রদান করে:\n`,
+    gu: (name: string) => `${name} આ લાભો પ્રદાન કરે છે:\n`,
+  };
+
+  // Detect question type and generate tailored response
+  if (questionLower.includes("benefit") || questionLower.includes("how much") || questionLower.includes("rupee") || questionLower.includes("amount")) {
+    answer = intros[language](pName);
+    pBenefits.forEach(b => {
+      answer += `• ${b.title}: ${b.amount || fallbackLabels[language].benefitVaries}\n`;
+    });
+    answer += `\n${fallbackLabels[language].mainBenefit}: ${pElig?.slice(0, 2)?.join(", ") || fallbackLabels[language].notListed}`;
+  } else if (questionLower.includes("document") || questionLower.includes("proof") || questionLower.includes("required") || questionLower.includes("paper")) {
+    // Documents question
+    const docIntro: Record<SupportedLanguage, string> = {
+      en: `For ${pName}, you'll need these documents:\n`,
+      hi: `${pName} के लिए ये दस्तावेज चाहिए:\n`,
+      kn: `${pName} ಗಾಗಿ ನಿಮಗೆ ಈ ದಾಖಲೆಗಳ ಅಗತ್ಯವಿದೆ:\n`,
+      ta: `${pName} க்காக உங்களுக்கு இந்த ஆவணங்கள் தேவை:\n`,
+      te: `${pName} కోసం మీకు ఈ పత్రాలు అవసరమవుతాయి:\n`,
+      mr: `${pName} साठी तुम्हाला या कागदपत्रांची गरज आहे:\n`,
+      bn: `${pName} এর জন্য আপনার এই নথিগুলি প্রয়োজন:\n`,
+      gu: `${pName} માટે તમને આ દસ્તાવેજોની જરૂર છે:\n`,
+    };
+    answer = docIntro[language];
+    pDocs?.forEach((doc, i) => {
+      answer += `${i + 1}. ${doc}\n`;
+    });
+  } else if (questionLower.includes("eligible") || questionLower.includes("qualify") || questionLower.includes("criteria")) {
+    // Eligibility question
+    const eligIntro: Record<SupportedLanguage, string> = {
+      en: `To be eligible for ${pName}:\n`,
+      hi: `${pName} के लिए पात्र होने के लिए:\n`,
+      kn: `${pName} ಗೆ ಅರ್ಹರಾಗಲು:\n`,
+      ta: `${pName} க்கு தகுதிவாய்ந்ததாக இருக்க:\n`,
+      te: `${pName} కోసం అర్హుడిగా ఉండటానికి:\n`,
+      mr: `${pName} साठी पात्र होण्यासाठी:\n`,
+      bn: `${pName} এর জন্য যোগ্য হতে:\n`,
+      gu: `${pName} માટે પાત્ર હોવા માટે:\n`,
+    };
+    answer = eligIntro[language];
+    pElig?.forEach((criteria, i) => {
+      answer += `${i + 1}. ${criteria}\n`;
+    });
+  } else if (questionLower.includes("apply") || questionLower.includes("application") || questionLower.includes("step") || questionLower.includes("process") || questionLower.includes("online") || questionLower.includes("offline")) {
+    // Application steps question
+    const appIntro: Record<SupportedLanguage, string> = {
+      en: `How to apply for ${pName}:\n1. Check your eligibility\n2. Gather documents\n3. Visit official portal\n4. Fill application\n5. Submit\n6. Track status\n`,
+      hi: `${pName} के लिए आवेदन कैसे करें:\n1. अपनी पात्रता जांचें\n2. दस्तावेज इकट्ठा करें\n3. आधिकारिक पोर्टल पर जाएं\n4. आवेदन पत्र भरें\n5. जमा करें\n6. स्थिति ट्रैक करें\n`,
+      kn: `${pName} ಗೆ ಅರ್ಜಿ ಸಲ್ಲಿಸುವುದು ಹೇಗೆ:\n1. ನಿಮ್ಮ ಅರ್ಹತೆ ಪರಿಶೀಲಿಸಿ\n2. ದಾಖಲೆಗಳನ್ನು ಸಂಗ್ರಹಿಸಿ\n3. ಅಧಿಕೃತ ಪೋರ್ಟಲ್‌ನಲ್ಲಿ ಭೇಟಿ ನೀಡಿ\n4. ಅರ್ಜಿ ಭರ್ತಿ ಮಾಡಿ\n5. ಸಲ್ಲಿಸಿ\n6. ಸ್ಥಿತಿ ಟ್ರ್ಯಾಕ್ ಮಾಡಿ\n`,
+      ta: `${pName} க்கு விண்ணப்பிக்க எப்படி:\n1. உங்கள் தகுதியைச் சரிபார்க்கவும்\n2. ஆவணங்களைச் சேகரிக்கவும்\n3. அதிகாரப்பூர்வ போர்டலுக்குச் செல்லவும்\n4. விண்ணப்பத்தை நிரப்பவும்\n5. சமர்ப்பிக்கவும்\n6. நிலையைக் கண்காணிக்கவும்\n`,
+      te: `${pName} కోసం దరఖాస్తు చేయడం ఎలా:\n1. మీ అర్హతను చెక్ చేయండి\n2. పత్రాలను సేకరించండి\n3. అధికారిక పోర్టల్‌ను సందర్శించండి\n4. దరఖాస్తును పూరించండి\n5. సమర్పించండి\n6. స్థితిని ట్రాక్ చేయండి\n`,
+      mr: `${pName} साठी अर्ज कसे करावे:\n1. आपली पात्रता तपासा\n2. कागदपत्र जमा करा\n3. अधिकृत पोर्टलला भेट द्या\n4. अर्ज भरा\n5. सादर करा\n6. स्थिती ट्रॅक करा\n`,
+      bn: `${pName} এর জন্য আবেদন করতে কীভাবে:\n1. আপনার যোগ্যতা যাচাই করুন\n2. নথি সংগ্রহ করুন\n3. সরকারি পোর্টালে যান\n4. আবেদন পূরণ করুন\n5. জমা দিন\n6. স্থিতি ট্রাক করুন\n`,
+      gu: `${pName} માટે અરજી કેવી રીતે કરવી:\n1. તમારી પાત્રતા તપાસો\n2. દસ્તાવેજો એકત્ર કરો\n3. સત્તાવાર પોર્ટલને મુલાકાત આપો\n4. અરજી પૂર્ણ કરો\n5. સમર્પણ કરો\n6. સ્થિતિ ટ્રાક કરો\n`,
+    };
+    answer = appIntro[language];
+  } else {
+    // Default overview
+    const defaultIntro: Record<SupportedLanguage, string> = {
+      en: `${pName}\n\nKey Benefit: ${pBenefits[0]?.title || 'Various benefits'}\nDocuments: ${pDocs?.slice(0, 2)?.join(", ")}\nPortal: ${primary.applicationUrl || primary.sourceUrl || "Official portal"}`,
+      hi: `${pName}\n\nमुख्य लाभ: ${pBenefits[0]?.title || 'विभिन्न लाभ'}\nदस्तावेज: ${pDocs?.slice(0, 2)?.join(", ")}\nपोर्टल: ${primary.applicationUrl || "आधिकारिक पोर्टल"}`,
+      kn: `${pName}\n\nಮುಖ್ಯ ಲಾಭ: ${pBenefits[0]?.title || 'ವಿವಿಧ ಲಾಭ'}\nದಾಖಲೆಗಳು: ${pDocs?.slice(0, 2)?.join(", ")}\nಪೋರ್ಟಲ್: ${primary.applicationUrl || "ಅಧಿಕೃತ ಪೋರ್ಟಲ್"}`,
+      ta: `${pName}\n\nமுக்கிய நன்மை: ${pBenefits[0]?.title || 'பல நன்மைகள்'}\nஆவணங்கள்: ${pDocs?.slice(0, 2)?.join(", ")}\nபோர்டல்: ${primary.applicationUrl || "அதிகாரப்பூர்வ போர்டல்"}`,
+      te: `${pName}\n\nప్రధాన ప్రయోజనం: ${pBenefits[0]?.title || 'విభిన్న ప్రయోజనాలు'}\nపత్రాలు: ${pDocs?.slice(0, 2)?.join(", ")}\nపోర్టల్: ${primary.applicationUrl || "అధికారిక పోర్టల్"}`,
+      mr: `${pName}\n\nमुख्य लाभ: ${pBenefits[0]?.title || 'विविध लाभ'}\nकागदपत्र: ${pDocs?.slice(0, 2)?.join(", ")}\nपोर्टल: ${primary.applicationUrl || "अधिकृत पोर्टल"}`,
+      bn: `${pName}\n\nপ্রধান সুবিধা: ${pBenefits[0]?.title || 'বিভিন্ন সুবিধা'}\nনথি: ${pDocs?.slice(0, 2)?.join(", ")}\nপোর্টাল: ${primary.applicationUrl || "সরকারি পোর্টাল"}`,
+      gu: `${pName}\n\nમુખ્ય લાભ: ${pBenefits[0]?.title || 'વિવિધ લાભો'}\nદસ્તાવેજો: ${pDocs?.slice(0, 2)?.join(", ")}\nપોર્ટલ: ${primary.applicationUrl || "સત્તાવાર પોર્ટલ"}`,
+    };
+    answer = defaultIntro[language];
+  }
+
+  // Add language-specific warning
+  const warnings: Record<SupportedLanguage, string> = {
+    en: "\n\n⚠️ Important: Never share Aadhaar, OTP, passwords, or bank details in this chat.",
+    hi: "\n\n⚠️ महत्वपूर्ण: इस चैट में आधार, OTP, पासवर्ड या बैंक विवरण कभी साझा न करें।",
+    kn: "\n\n⚠️ ಪ್ರಮುಖ: ಈ ಚಾಟ್‌ನಲ್ಲಿ ಆಧಾರ್, ಒಟಿಪಿ, ಪಾಸ್‌ವರ್ಡ್‌ಗಳು ಅಥವಾ ಬ್ಯಾಂಕ್ ವಿವರಗಳನ್ನು ಎಂದಿಗೂ ಹಂಚಿಕೊಳ್ಳಬೇಡಿ.",
+    ta: "\n\n⚠️ முக்கியமானது: இந்த அரட்டையில் ஆதார், OTP, கடவுச்சொற்கள் அல்லது வங்கி விவரங்களை ஒருபோதும் பகிர வேண்டாம்.",
+    te: "\n\n⚠️ ముఖ్యమైనది: ఈ చాట్‌లో ఆధార్, OTP, పాస్‌వర్డ్‌లు లేదా బ్యాంక్ వివరాలను ఎప్పుడూ భాగస్వామ్యం చేయవద్దు.",
+    mr: "\n\n⚠️ महत्त्वाचे: या चॅटमध्ये आधार, OTP, पासवर्ड किंवा बँक तपशील कधीही शेअर करू नका.",
+    bn: "\n\n⚠️ গুরুত্বপূর্ণ: এই চ্যাটে কখনও আধার, OTP, পাসওয়ার্ড বা ব্যাঙ্কের বিবরণ শেয়ার করবেন না।",
+    gu: "\n\n⚠️ મહત્વપૂર્ણ: આ ચેટમાં ક્યારેય આધાર, OTP, પાસવર્ડ અથવા બેંક વિગતો શેર કરશો નહીં.",
+  };
+
+  answer += warnings[language] || warnings.en;
+
+  // Stream token by token
   const tokens = answer.split(/(\s+)/);
   for (const token of tokens) {
-    await new Promise((resolve) => setTimeout(resolve, 12));
+    await new Promise((resolve) => setTimeout(resolve, 10));
     yield token;
   }
 }

@@ -14,7 +14,10 @@ import type { Scheme } from "@/types/scheme";
 const suggestions = [
   "Which schemes am I most likely eligible for?",
   "What documents should I keep ready?",
-  "Explain PM-KISAN application steps in simple words."
+  "Explain PM-KISAN application steps in simple words.",
+  "What are the key benefits and amounts?",
+  "What is the eligibility criteria?",
+  "Can I apply online?"
 ];
 
 export function ChatWindow({ initialScheme }: { initialScheme?: Scheme }) {
