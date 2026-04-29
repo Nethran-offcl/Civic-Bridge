@@ -76,7 +76,9 @@ async function requestTranslations(texts: string[], language: SupportedLanguage)
 
   for (const text of missing) {
     const nextSize = size + text.length;
-    if (current.length > 0 && (current.length >= 80 || nextSize > 4000)) {
+    // Chunk size 50 is a sweet spot: it avoids the 5 requests/minute API rate limit 
+    // while keeping the JSON array small enough for Gemini to maintain length stability.
+    if (current.length > 0 && (current.length >= 50 || nextSize > 3000)) {
       chunks.push(current);
       current = [];
       size = 0;
